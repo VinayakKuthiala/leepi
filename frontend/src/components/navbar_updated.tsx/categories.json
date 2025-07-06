@@ -1,0 +1,41 @@
+{
+    "categories":
+    [
+        {
+            "category_name": "Printing Services",
+            "subcategories": 
+            [
+                {
+                    "subcategory_name":"Visiting Cards",
+                    "subcategory_image": "image_path_inside_public_folder",
+                    "subcategory_link": "https://example.com",
+                    "subcategory_products": [
+                        {
+                            "product_name":"Normal",
+                            "product_image":"path to image",
+                            "product_link":"https://example.com"
+                        },
+                        {
+                            "product_name":"Premium",
+                            "product_image":"path to image",
+                            "product_link":"https://example.com"
+                        }
+
+                    ]
+                },
+                {
+                    "subcategory_name":"LetterPads",
+                    "subcategory_image": "image_path_inside_public_folder",
+                    "subcategory_link": "https://example.com",
+                    "subcategory_products": [
+                        {
+                            "product_name":"Normal",
+                            "product_image":"path to image",
+                            "product_link":"https://example.com"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
