@@ -13,6 +13,14 @@ const Navbar_Products = () => {
     null
   );
 
+  // Mobile accordion state
+  const [mobileCategoryOpen, setMobileCategoryOpen] = useState<string | null>(
+    null
+  );
+  const [mobileSubcategoryOpen, setMobileSubcategoryOpen] = useState<
+    string | null
+  >(null);
+
   return (
     <nav className="bg-white shadow-md px-6 py-3 relative z-40">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -54,23 +62,93 @@ const Navbar_Products = () => {
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden mt-2 space-y-2 text-gray-700 font-medium px-2 flex flex-col">
-          <Link href="/" onClick={() => setIsOpen(false)}>
-            Home
-          </Link>
-          <Link href="/about" onClick={() => setIsOpen(false)}>
-            About
-          </Link>
-          <Link href="/services" onClick={() => setIsOpen(false)}>
-            Services
-          </Link>
-          <Link href="/contact" onClick={() => setIsOpen(false)}>
-            Contact
-          </Link>
+        <div className="fixed inset-0 z-50 bg-black bg-opacity-40 md:hidden">
+          <div className="fixed top-0 left-0 h-full w-4/5 max-w-xs bg-white shadow-lg p-4 overflow-y-auto transition-transform duration-300">
+            <button
+              className="mb-4 text-gray-700 hover:text-black"
+              onClick={() => setIsOpen(false)}
+              aria-label="Close menu"
+            >
+              <X size={28} />
+            </button>
+            <nav className="flex flex-col gap-2">
+              {CategoriesData.categories.map((category) => (
+                <div key={category.category_name}>
+                  <button
+                    className="w-full flex items-center justify-between py-2 px-2 text-left text-base font-medium text-gray-800 hover:bg-gray-100 rounded"
+                    onClick={() =>
+                      setMobileCategoryOpen(
+                        mobileCategoryOpen === category.category_name
+                          ? null
+                          : category.category_name
+                      )
+                    }
+                  >
+                    {category.category_name}
+                    <ChevronDown
+                      size={18}
+                      className={`transition-transform ${
+                        mobileCategoryOpen === category.category_name
+                          ? "rotate-180"
+                          : ""
+                      }`}
+                    />
+                  </button>
+                  {mobileCategoryOpen === category.category_name && (
+                    <div className="pl-4 border-l border-gray-200">
+                      {category.subcategories.map((subcategory) => (
+                        <div key={subcategory.subcategory_name}>
+                          <button
+                            className="w-full flex items-center justify-between py-2 px-2 text-left text-sm text-gray-700 hover:bg-gray-50 rounded"
+                            onClick={() =>
+                              setMobileSubcategoryOpen(
+                                mobileSubcategoryOpen ===
+                                  `${category.category_name}__${subcategory.subcategory_name}`
+                                  ? null
+                                  : `${category.category_name}__${subcategory.subcategory_name}`
+                              )
+                            }
+                          >
+                            {subcategory.subcategory_name}
+                            <ChevronDown
+                              size={16}
+                              className={`transition-transform ${
+                                mobileSubcategoryOpen ===
+                                `${category.category_name}__${subcategory.subcategory_name}`
+                                  ? "rotate-180"
+                                  : ""
+                              }`}
+                            />
+                          </button>
+                          {mobileSubcategoryOpen ===
+                            `${category.category_name}__${subcategory.subcategory_name}` && (
+                            <div className="pl-4 border-l border-gray-100">
+                              {subcategory.subcategory_products.map(
+                                (product) => (
+                                  <Link
+                                    key={product.product_name}
+                                    href={product.product_link}
+                                    className="block py-2 px-2 text-xs text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded"
+                                    onClick={() => setIsOpen(false)}
+                                  >
+                                    {product.product_name}
+                                  </Link>
+                                )
+                              )}
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </nav>
+          </div>
         </div>
       )}
       {/* Categories Dropdown */}
-      <div className="mt-4 relative">
+     {!isOpen && <div className="mt-4 relative">
         <div className="flex justify-center items-center">
           {CategoriesData.categories.map((category) => (
             <div
@@ -123,36 +201,41 @@ const Navbar_Products = () => {
                             </h4>
                             <p className="text-xs text-gray-500">
                               {subcategory.subcategory_products.length} product
-                              {subcategory.subcategory_products.length !== 1 ? "s" : ""}
+                              {subcategory.subcategory_products.length !== 1
+                                ? "s"
+                                : ""}
                             </p>
                           </Link>
 
                           {/* Products List on Hover */}
-                          {hoveredSubcategory === subcategory.subcategory_name &&
+                          {hoveredSubcategory ===
+                            subcategory.subcategory_name &&
                             subcategory.subcategory_products.length > 0 && (
                               <div className="mt-4 bg-gray-50 rounded-lg p-4 border border-gray-100">
                                 <h5 className="text-xs font-semibold text-gray-600 uppercase tracking-wide mb-3">
                                   Products
                                 </h5>
                                 <div className="space-y-2">
-                                  {subcategory.subcategory_products.map((product) => (
-                                    <Link
-                                      key={product.product_name}
-                                      href={product.product_link}
-                                      className="flex items-center gap-2 text-sm text-gray-700 hover:text-blue-600 transition-colors duration-200"
-                                    >
-                                      <div className="w-6 h-6 bg-gray-200 rounded flex items-center justify-center overflow-hidden">
-                                        <Image
-                                          src={product.product_image}
-                                          alt={product.product_name}
-                                          width={24}
-                                          height={24}
-                                          className="object-cover"
-                                        />
-                                      </div>
-                                      <span>{product.product_name}</span>
-                                    </Link>
-                                  ))}
+                                  {subcategory.subcategory_products.map(
+                                    (product) => (
+                                      <Link
+                                        key={product.product_name}
+                                        href={product.product_link}
+                                        className="flex items-center gap-2 text-sm text-gray-700 hover:text-blue-600 transition-colors duration-200"
+                                      >
+                                        <div className="w-6 h-6 bg-gray-200 rounded flex items-center justify-center overflow-hidden">
+                                          <Image
+                                            src={product.product_image}
+                                            alt={product.product_name}
+                                            width={24}
+                                            height={24}
+                                            className="object-cover"
+                                          />
+                                        </div>
+                                        <span>{product.product_name}</span>
+                                      </Link>
+                                    )
+                                  )}
                                 </div>
                               </div>
                             )}
@@ -165,7 +248,7 @@ const Navbar_Products = () => {
             </div>
           ))}
         </div>
-      </div>
+      </div>}
     </nav>
   );
 };
