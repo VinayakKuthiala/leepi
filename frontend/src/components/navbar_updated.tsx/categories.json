@@ -7,17 +7,17 @@
             [
                 {
                     "subcategory_name":"Visiting Cards",
-                    "subcategory_image": "image_path_inside_public_folder",
+                    "subcategory_image": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=100&h=100&fit=crop&crop=center",
                     "subcategory_link": "https://example.com",
                     "subcategory_products": [
                         {
                             "product_name":"Normal",
-                            "product_image":"path to image",
+                            "product_image":"https://unsplash.com/photos/a-person-admiring-the-sunset-over-mountains-YZFkznEvbPk?w=80&h=80&fit=crop&crop=center",
                             "product_link":"https://example.com"
                         },
                         {
                             "product_name":"Premium",
-                            "product_image":"path to image",
+                            "product_image":"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=center",
                             "product_link":"https://example.com"
                         }
 
@@ -25,12 +25,12 @@
                 },
                 {
                     "subcategory_name":"LetterPads",
-                    "subcategory_image": "image_path_inside_public_folder",
+                    "subcategory_image": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=100&h=100&fit=crop&crop=center",
                     "subcategory_link": "https://example.com",
                     "subcategory_products": [
                         {
                             "product_name":"Normal",
-                            "product_image":"path to image",
+                            "product_image":"https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=80&h=80&fit=crop&crop=center",
                             "product_link":"https://example.com"
                         }
                     ]

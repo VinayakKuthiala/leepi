@@ -1,16 +1,20 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { useState } from "react";
+import Link from "next/link";
+import { Menu, X, ChevronDown } from "lucide-react";
 import Image from "next/image";
-
+import CategoriesData from "./categories.json";
 
 const Navbar_Products = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
+  const [hoveredSubcategory, setHoveredSubcategory] = useState<string | null>(
+    null
+  );
 
   return (
-    <nav className="bg-white shadow-md px-6 py-3">
+    <nav className="bg-white shadow-md px-6 py-3 relative z-40">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center">
@@ -23,13 +27,13 @@ const Navbar_Products = () => {
           {/* <span className="font-bold text-lg text-gray-800">YourCompany</span> */}
           <Link href="/">
             <Image
-                src="/leepi_hindi_logo_trimmed.jpg"
-                alt="leepi Logo"
-                width = {130}
-                height = {0}
-                className="cursor-pointer"
+              src="/leepi_hindi_logo_trimmed.jpg"
+              alt="leepi Logo"
+              width={130}
+              height={0}
+              className="cursor-pointer"
             />
-         </Link>
+          </Link>
         </div>
 
         {/* Menu items */}
@@ -51,12 +55,117 @@ const Navbar_Products = () => {
       {/* Mobile menu */}
       {isOpen && (
         <div className="md:hidden mt-2 space-y-2 text-gray-700 font-medium px-2 flex flex-col">
-          <Link href="/" onClick={() => setIsOpen(false)}>Home</Link>
-          <Link href="/about" onClick={() => setIsOpen(false)}>About</Link>
-          <Link href="/services" onClick={() => setIsOpen(false)}>Services</Link>
-          <Link href="/contact" onClick={() => setIsOpen(false)}>Contact</Link>
+          <Link href="/" onClick={() => setIsOpen(false)}>
+            Home
+          </Link>
+          <Link href="/about" onClick={() => setIsOpen(false)}>
+            About
+          </Link>
+          <Link href="/services" onClick={() => setIsOpen(false)}>
+            Services
+          </Link>
+          <Link href="/contact" onClick={() => setIsOpen(false)}>
+            Contact
+          </Link>
         </div>
       )}
+      {/* Categories Dropdown */}
+      <div className="mt-4 relative">
+        <div className="flex justify-center items-center">
+          {CategoriesData.categories.map((category) => (
+            <div
+              key={category.category_name}
+              className="relative group"
+              onMouseEnter={() => setHoveredCategory(category.category_name)}
+              onMouseLeave={() => {
+                setHoveredCategory(null);
+                setHoveredSubcategory(null);
+              }}
+            >
+              {/* Category Button */}
+              <button className="flex items-center gap-1 px-6 py-3 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-200">
+                {category.category_name}
+                <ChevronDown
+                  size={16}
+                  className="transition-transform duration-200 group-hover:rotate-180"
+                />
+              </button>
+
+              {/* Full Width Subcategories Dropdown */}
+              {hoveredCategory === category.category_name && (
+                <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-screen bg-white border-t border-gray-200 shadow-lg z-50 py-8">
+                  <div className="max-w-7xl mx-auto px-6">
+                    <div className="flex justify-between items-start gap-8">
+                      {category.subcategories.map((subcategory) => (
+                        <div
+                          key={subcategory.subcategory_name}
+                          className="flex-1 text-center"
+                          onMouseEnter={() =>
+                            setHoveredSubcategory(subcategory.subcategory_name)
+                          }
+                          onMouseLeave={() => setHoveredSubcategory(null)}
+                        >
+                          <Link
+                            href={subcategory.subcategory_link}
+                            className="block group hover:bg-gray-50 rounded-lg p-4 transition-colors duration-200"
+                          >
+                            <div className="w-16 h-16 mx-auto mb-3 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden shadow-sm">
+                              <Image
+                                src={subcategory.subcategory_image}
+                                alt={subcategory.subcategory_name}
+                                width={64}
+                                height={64}
+                                className="object-cover"
+                              />
+                            </div>
+                            <h4 className="text-sm font-medium text-gray-900 mb-1">
+                              {subcategory.subcategory_name}
+                            </h4>
+                            <p className="text-xs text-gray-500">
+                              {subcategory.subcategory_products.length} product
+                              {subcategory.subcategory_products.length !== 1 ? "s" : ""}
+                            </p>
+                          </Link>
+
+                          {/* Products List on Hover */}
+                          {hoveredSubcategory === subcategory.subcategory_name &&
+                            subcategory.subcategory_products.length > 0 && (
+                              <div className="mt-4 bg-gray-50 rounded-lg p-4 border border-gray-100">
+                                <h5 className="text-xs font-semibold text-gray-600 uppercase tracking-wide mb-3">
+                                  Products
+                                </h5>
+                                <div className="space-y-2">
+                                  {subcategory.subcategory_products.map((product) => (
+                                    <Link
+                                      key={product.product_name}
+                                      href={product.product_link}
+                                      className="flex items-center gap-2 text-sm text-gray-700 hover:text-blue-600 transition-colors duration-200"
+                                    >
+                                      <div className="w-6 h-6 bg-gray-200 rounded flex items-center justify-center overflow-hidden">
+                                        <Image
+                                          src={product.product_image}
+                                          alt={product.product_name}
+                                          width={24}
+                                          height={24}
+                                          className="object-cover"
+                                        />
+                                      </div>
+                                      <span>{product.product_name}</span>
+                                    </Link>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
     </nav>
   );
 };
