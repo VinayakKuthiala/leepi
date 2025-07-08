@@ -8,7 +8,7 @@ import categoriesData from "./Category.json"
 interface Subcategory {
   id: number
   title: string
-  image: string
+  image?: string
 }
 
 interface Category {
@@ -88,15 +88,17 @@ const CategoryCarousel = () => {
   // Render subcategories based on count
   const renderSubcategories = (subcategories: Subcategory[]) => {
     const count = subcategories.length
+    // Filter only subcategories with images for rendering
+    const subcategoriesWithImages = subcategories.filter(subcat => subcat.image)
 
     switch (count) {
       case 2:
         return (
           <div className="grid grid-rows-2 gap-2 h-full">
-            {subcategories.map((subcat, index) => (
+            {subcategoriesWithImages.map((subcat, index) => (
               <div key={subcat.id} className="relative group cursor-pointer overflow-hidden rounded-lg">
                 <Image
-                  src={subcat.image}
+                  src={subcat.image!}
                   alt={subcat.title}
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
@@ -116,22 +118,22 @@ const CategoryCarousel = () => {
             {/* Top half - single image */}
             <div className="relative group cursor-pointer overflow-hidden rounded-lg">
               <Image
-                src={subcategories[0].image}
-                alt={subcategories[0].title}
+                src={subcategoriesWithImages[0]?.image!}
+                alt={subcategoriesWithImages[0]?.title}
                 fill
                 className="object-cover transition-transform duration-300 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               <div className="absolute bottom-2 left-2 right-2">
-                <h4 className="text-white text-sm font-semibold truncate">{subcategories[0].title}</h4>
+                <h4 className="text-white text-sm font-semibold truncate">{subcategoriesWithImages[0]?.title}</h4>
               </div>
             </div>
             {/* Bottom half - two images */}
             <div className="grid grid-cols-2 gap-2">
-              {subcategories.slice(1).map((subcat) => (
+              {subcategoriesWithImages.slice(1).map((subcat) => (
                 <div key={subcat.id} className="relative group cursor-pointer overflow-hidden rounded-lg">
                   <Image
-                    src={subcat.image}
+                    src={subcat.image!}
                     alt={subcat.title}
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
@@ -149,10 +151,10 @@ const CategoryCarousel = () => {
       case 4:
         return (
           <div className="grid grid-cols-2 grid-rows-2 gap-2 h-full">
-            {subcategories.map((subcat) => (
+            {subcategoriesWithImages.map((subcat) => (
               <div key={subcat.id} className="relative group cursor-pointer overflow-hidden rounded-lg">
                 <Image
-                  src={subcat.image}
+                  src={subcat.image!}
                   alt={subcat.title}
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
@@ -173,6 +175,7 @@ const CategoryCarousel = () => {
 
   const renderCategoryLayout = (category: Category) => {
     const hasSubcategories = category.subcategories.length > 0
+    const hasSubcategoryImages = category.subcategories.some(subcat => subcat.image)
 
     if (!hasSubcategories) {
       // Full width category image with title overlay
@@ -187,7 +190,35 @@ const CategoryCarousel = () => {
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
           <div className="absolute bottom-8 left-8 right-8 text-center">
             <h2 className="text-white text-3xl md:text-4xl font-bold mb-2">{category.title}</h2>
-            {/* <p className="text-white/90 text-lg">Explore our complete range</p> */}
+            <p className="text-white/90 text-lg">Explore our complete range</p>
+          </div>
+        </div>
+      )
+    }
+
+    // If subcategories have no images, show them as text under the category title
+    if (!hasSubcategoryImages) {
+      return (
+        <div className="relative h-full overflow-hidden rounded-lg">
+          <Image
+            src={category.image}
+            alt={category.title}
+            fill
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+          <div className="absolute bottom-8 left-8 right-8 text-center">
+            <h2 className="text-white text-3xl md:text-4xl font-bold mb-4">{category.title}</h2>
+            <div className="space-y-2">
+              {category.subcategories.map((subcat) => (
+                <div 
+                  key={subcat.id} 
+                  className="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2 cursor-pointer hover:bg-white/30 transition-colors duration-200"
+                >
+                  <p className="text-white text-lg font-medium">{subcat.title}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       )

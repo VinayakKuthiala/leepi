@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/navbar";
 import Navbar_Products from "@/components/navbar_updated.tsx";
 import Footer from "@/components/Footer";
+import GetInTouch from "@/components/GetInTouch";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,6 +35,7 @@ export default function RootLayout({
         <Navbar_Products />
         <main>{children}</main>
         <Footer />
+        <GetInTouch />
         {/* <Navbar_Products /> */}
       </body>
     </html>
