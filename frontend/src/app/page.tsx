@@ -3,6 +3,7 @@ import Image from "next/image";
 import AnimatedWriting from "@/components/AnimatedWriting";
 import ListingCard from "../components/ListingCard"
 import Caresoul from "@/components/HomeCaresoul";
+import FeatureProduct from "@/components/FeatureProduct";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
         text="Welcome to our creative studio – where design meets emotion"
       />
       <Caresoul/>
+      <FeatureProduct/>
       {/* <ListingCard
           header="Flex Banners"
           description="Order Customized Flex Banners in Seconds!"
