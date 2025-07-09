@@ -13,6 +13,8 @@ const Navbar_Products = () => {
     null
   );
 
+  console.log("hoveredSubcategory", hoveredSubcategory);
+
   // Mobile accordion state
   const [mobileCategoryOpen, setMobileCategoryOpen] = useState<string | null>(
     null
@@ -148,107 +150,117 @@ const Navbar_Products = () => {
         </div>
       )}
       {/* Categories Dropdown */}
-     {!isOpen && <div className="mt-4 relative">
-        <div className="flex justify-center items-center">
-          {CategoriesData?.categories?.map((category) => (
-            <div
-              key={category?.category_name}
-              className="relative group"
-              onMouseEnter={() => setHoveredCategory(category?.category_name)}
-              onMouseLeave={() => {
-                setHoveredCategory(null);
-                setHoveredSubcategory(null);
-              }}
-            >
-              {/* Category Button */}
-              <button className="flex items-center gap-1 px-6 py-3 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-200">
-                {category?.category_name}
-                <ChevronDown
-                  size={16}
-                  className="transition-transform duration-200 group-hover:rotate-180"
-                />
-              </button>
+      {!isOpen && (
+        <div className="mt-4 relative">
+          <div className="flex justify-center items-center">
+            {CategoriesData?.categories?.map((category) => (
+              <div
+                key={category?.category_name}
+                className="relative group"
+                onMouseEnter={() => setHoveredCategory(category?.category_name)}
+                onMouseLeave={() => {
+                  setHoveredCategory(null);
+                  setHoveredSubcategory(null);
+                }}
+              >
+                {/* Category Button */}
+                <button className="flex items-center gap-1 px-6 py-3 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-200">
+                  {category?.category_name}
+                  <ChevronDown
+                    size={16}
+                    className="transition-transform duration-200 group-hover:rotate-180"
+                  />
+                </button>
 
-              {/* Full Width Subcategories Dropdown */}
-              {hoveredCategory === category?.category_name && (
-                <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-screen bg-white border-t border-gray-200 shadow-lg z-50 py-8">
-                  <div className="max-w-7xl mx-auto px-6">
-                    <div className="flex justify-between items-start gap-8">
-                      {category?.subcategories?.map((subcategory) => (
-                        <div
-                          key={subcategory?.subcategory_name}
-                          className="flex-1 text-center"
-                          onMouseEnter={() =>
-                            setHoveredSubcategory(subcategory?.subcategory_name)
-                          }
-                          onMouseLeave={() => setHoveredSubcategory(null)}
-                        >
-                          <Link
-                            href={subcategory?.subcategory_link}
-                            className="block group hover:bg-gray-50 rounded-lg p-4 transition-colors duration-200"
+                {/* Full Width Subcategories Dropdown */}
+                {hoveredCategory === category?.category_name && (
+                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-screen bg-white border-t border-gray-200 shadow-lg z-50 py-8 overflow-visible">
+                    <div className="max-w-7xl mx-auto px-6 overflow-visible">
+                      <div className="flex justify-between items-start gap-8 overflow-visible z-50 relative">
+                        {category?.subcategories?.map((subcategory) => (
+                          <div
+                            key={subcategory?.subcategory_name}
+                            className="flex-1 text-center relative overflow-visible"
+                            onMouseEnter={() =>
+                              setHoveredSubcategory(
+                                subcategory?.subcategory_name
+                              )
+                            }
+                            onMouseLeave={() => setHoveredSubcategory(null)}
                           >
-                            <div className="w-16 h-16 mx-auto mb-3 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden shadow-sm">
-                              <Image
-                                src={subcategory?.subcategory_image}
-                                alt={subcategory?.subcategory_name}
-                                width={64}
-                                height={64}
-                                className="object-cover"
-                              />
-                            </div>
-                            <h4 className="text-sm font-medium text-gray-900 mb-1">
-                              {subcategory?.subcategory_name}
-                            </h4>
-                            <p className="text-xs text-gray-500">
-                              {subcategory?.subcategory_products?.length} product
-                              {subcategory?.subcategory_products?.length !== 1
-                                ? "s"
-                                : ""}
-                            </p>
-                          </Link>
-
-                          {/* Products List on Hover */}
-                          {hoveredSubcategory ===
-                            subcategory?.subcategory_name &&
-                            subcategory?.subcategory_products?.length > 0 && (
-                              <div className="mt-4 bg-gray-50 rounded-lg p-4 border border-gray-100">
-                                <h5 className="text-xs font-semibold text-gray-600 uppercase tracking-wide mb-3">
-                                  Products
-                                </h5>
-                                <div className="space-y-2">
-                                  {subcategory?.subcategory_products?.map(
-                                    (product) => (
-                                      <Link
-                                        key={product?.product_name}
-                                        href={product?.product_link}
-                                        className="flex items-center gap-2 text-sm text-gray-700 hover:text-blue-600 transition-colors duration-200"
-                                      >
-                                        <div className="w-6 h-6 bg-gray-200 rounded flex items-center justify-center overflow-hidden">
-                                          <Image
-                                            src={product?.product_image}
-                                            alt={product?.product_name}
-                                            width={24}
-                                            height={24}
-                                            className="object-cover"
-                                          />
-                                        </div>
-                                        <span>{product?.product_name}</span>
-                                      </Link>
-                                    )
-                                  )}
-                                </div>
+                            <Link
+                              href={subcategory?.subcategory_link}
+                              className="block group hover:bg-gray-50 rounded-lg p-4 transition-colors duration-200"
+                            >
+                              <div className="w-16 h-16 mx-auto mb-3 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden shadow-sm">
+                                <Image
+                                  src={subcategory?.subcategory_image}
+                                  alt={subcategory?.subcategory_name}
+                                  width={64}
+                                  height={64}
+                                  className="object-cover"
+                                />
                               </div>
-                            )}
-                        </div>
-                      ))}
+                              <h4 className="text-sm font-medium text-gray-900 mb-1">
+                                {subcategory?.subcategory_name}
+                              </h4>
+                              <p className="text-xs text-gray-500">
+                                {subcategory?.subcategory_products?.length}{" "}
+                                product
+                                {subcategory?.subcategory_products?.length !== 1
+                                  ? "s"
+                                  : ""}
+                              </p>
+                            </Link>
+
+                            {/* Products List on Hover */}
+                            {hoveredSubcategory ===
+                              subcategory?.subcategory_name &&
+                              subcategory?.subcategory_products?.length > 0 && (
+                                <div className="absolute left-1/2 -translate-x-1/2 top-full z-[999] mt-0 bg-white rounded-lg p-4 border border-gray-200 shadow-2xl min-w-[220px] max-w-xs overflow-visible flex flex-col items-start group/dropdown pointer-events-auto">
+                                  {/* Arrow/connector */}
+                                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white border-l border-t border-gray-200 rotate-45 z-0 shadow-md pointer-events-none"></div>
+                                  <h5 className="text-xs font-semibold text-gray-600 uppercase tracking-wide mb-3">
+                                    Products
+                                  </h5>
+                                  <div className="space-y-2 w-full">
+                                    {subcategory?.subcategory_products?.map(
+                                      (product) => (
+                                        <Link
+                                          key={product?.product_name}
+                                          href={product?.product_link}
+                                          style={{ color: "black" }}
+                                          className="flex items-center gap-2 text-sm text-black hover:text-blue-600 transition-colors duration-200 px-2 py-1 rounded hover:bg-gray-50 w-full"
+                                        >
+                                          <div className="w-6 h-6 bg-gray-200 rounded flex items-center justify-center overflow-hidden">
+                                            <Image
+                                              src={product?.product_image}
+                                              alt={product?.product_name}
+                                              width={24}
+                                              height={24}
+                                              className="object-cover"
+                                            />
+                                          </div>
+                                          <span className="text-gray-900 truncate">
+                                            {product?.product_name}
+                                          </span>
+                                        </Link>
+                                      )
+                                    )}
+                                  </div>
+                                </div>
+                              )}
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
-              )}
-            </div>
-          ))}
+                )}
+              </div>
+            ))}
+          </div>
         </div>
-      </div>}
+      )}
     </nav>
   );
 };

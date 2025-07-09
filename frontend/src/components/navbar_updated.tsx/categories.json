@@ -11,12 +11,12 @@
             {
               "product_name": "Normal",
               "product_image": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=80&h=80&fit=crop&crop=center",
-              "product_link": "https://example.com"
+              "product_link": "https://normal.example.com"
             },
             {
               "product_name": "Premium",
               "product_image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=center",
-              "product_link": "https://example.com"
+              "product_link": "https://premium.example.com"
             }
           ]
         },
