@@ -18,7 +18,7 @@ export default function Home() {
       {/* Product Categories Section */}
       <div className="my-12">
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl font-bold text-gray-300 mb-4">
             Our Service Categories
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">

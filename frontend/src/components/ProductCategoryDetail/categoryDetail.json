@@ -1,0 +1,83 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "category_name": "Printing Services",
+      "subcategories": [
+        {
+          "subcategory_name": "Visiting Cards",
+          "subcategory_image": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=100&h=100&fit=crop&crop=center",
+          "subcategory_link": "/visitting-cards",
+          "subcategory_products": [
+            {
+              "product_name": "Normal",
+              "product_image": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=80&h=80&fit=crop&crop=center",
+              "product_link": "/visitting-cards"
+            },
+            {
+              "product_name": "Premium",
+              "product_image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=center",
+              "product_link": "/visitting-cards"
+            }
+          ]
+        },
+        {
+          "subcategory_name": "LetterPads",
+          "subcategory_image": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=100&h=100&fit=crop&crop=center",
+          "subcategory_link": "https://example.com",
+          "subcategory_products": [
+            {
+              "product_name": "Normal",
+              "product_image": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=80&h=80&fit=crop&crop=center",
+              "product_link": "https://example.com"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "category_name": "Promotional",
+      "subcategories": [
+        {
+          "subcategory_name": "Brochure",
+          "subcategory_image": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=100&h=100&fit=crop&crop=center",
+          "subcategory_link": "https://example.com"
+        },
+        {
+          "subcategory_name": "Pamphlet",
+          "subcategory_image": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=100&h=100&fit=crop&crop=center",
+          "subcategory_link": "https://example.com",
+          "subcategory_products": [
+            {
+              "product_name": "Two Fold",
+              "product_image": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=80&h=80&fit=crop&crop=center",
+              "product_link": "https://example.com"
+            },
+            {
+              "product_name": "Three Fold",
+              "product_image": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=80&h=80&fit=crop&crop=center",
+              "product_link": "https://example.com"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "category_name": "Signage Printing",
+      "subcategories": [
+        {
+          "subcategory_name": "Flex",
+          "subcategory_image": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=100&h=100&fit=crop&crop=center",
+          "subcategory_link": "https://example.com"
+        },
+        {
+          "subcategory_name": "StandEase",
+          "subcategory_image": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=100&h=100&fit=crop&crop=center",
+          "subcategory_link": "https://example.com"
+        }
+      ]
+    }
+  ]
+}
