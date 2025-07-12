@@ -3,7 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import Navbar_Products from "@/components/navbar_updated.tsx";
-
+import Footer from "@/components/Footer";
+import GetInTouch from "@/components/GetInTouch";
+import NextTopLoader from "nextjs-toploader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,9 +32,23 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar />
-        <main>{children}</main>
+        <NextTopLoader
+          color="#06b6d4"
+          initialPosition={0.08}
+          crawlSpeed={200}
+          height={3}
+          crawl={true}
+          showSpinner={true}
+          easing="ease"
+          speed={200}
+          shadow="0 0 10px #06b6d4,0 0 5px #06b6d4"
+        />
+        {/* <Navbar /> */}
         <Navbar_Products />
+        <main>{children}</main>
+        <Footer />
+        <GetInTouch />
+        {/* <Navbar_Products /> */}
       </body>
     </html>
   );

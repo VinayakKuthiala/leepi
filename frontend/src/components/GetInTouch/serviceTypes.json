@@ -1,0 +1,252 @@
+{
+  "serviceTypes": [
+    {
+      "id": "architecture",
+      "title": "ARCHITECTURE",
+      "images": [
+        {
+          "id": "house",
+          "title": "HOUSE",
+          "url": "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=300&h=200&fit=crop"
+        },
+        {
+          "id": "resort",
+          "title": "RESORT",
+          "url": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=300&h=200&fit=crop"
+        },
+        {
+          "id": "hotel",
+          "title": "HOTEL",
+          "url": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=300&h=200&fit=crop"
+        },
+        {
+          "id": "petrol-pump",
+          "title": "PETROL PUMP",
+          "url": "https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=300&h=200&fit=crop"
+        },
+        {
+          "id": "commercial",
+          "title": "COMMERCIAL",
+          "url": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=300&h=200&fit=crop"
+        }
+      ]
+    },
+    {
+      "id": "printing",
+      "title": "PRINTING SERVICES",
+      "images": [
+        {
+          "id": "business-cards",
+          "title": "BUSINESS CARDS",
+          "url": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=300&h=200&fit=crop"
+        },
+        {
+          "id": "brochures",
+          "title": "BROCHURES",
+          "url": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=200&fit=crop"
+        },
+        {
+          "id": "banners",
+          "title": "BANNERS",
+          "url": "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=300&h=200&fit=crop"
+        },
+        {
+          "id": "flyers",
+          "title": "FLYERS",
+          "url": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=300&h=200&fit=crop"
+        },
+        {
+          "id": "posters",
+          "title": "POSTERS",
+          "url": "https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?w=300&h=200&fit=crop"
+        }
+      ]
+    },
+    {
+      "id": "marketing",
+      "title": "MARKETING MATERIALS",
+      "images": [
+        {
+          "id": "catalogs",
+          "title": "CATALOGS",
+          "url": "https://images.unsplash.com/photo-1471897488648-5eae4ac6686b?w=300&h=200&fit=crop"
+        },
+        {
+          "id": "magazines",
+          "title": "MAGAZINES",
+          "url": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=200&fit=crop"
+        },
+        {
+          "id": "newsletters",
+          "title": "NEWSLETTERS",
+          "url": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=300&h=200&fit=crop"
+        },
+        {
+          "id": "presentations",
+          "title": "PRESENTATIONS",
+          "url": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=300&h=200&fit=crop"
+        },
+        {
+          "id": "portfolios",
+          "title": "PORTFOLIOS",
+          "url": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=300&h=200&fit=crop"
+        }
+      ]
+    },
+    {
+      "id": "signage",
+      "title": "SIGNAGE SOLUTIONS",
+      "images": [
+        {
+          "id": "outdoor-signs",
+          "title": "OUTDOOR SIGNS",
+          "url": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=300&h=200&fit=crop"
+        },
+        {
+          "id": "indoor-signs",
+          "title": "INDOOR SIGNS",
+          "url": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=300&h=200&fit=crop"
+        },
+        {
+          "id": "neon-signs",
+          "title": "NEON SIGNS",
+          "url": "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=300&h=200&fit=crop"
+        },
+        {
+          "id": "digital-displays",
+          "title": "DIGITAL DISPLAYS",
+          "url": "https://images.unsplash.com/photo-1551721434-8b94ddff0e6d?w=300&h=200&fit=crop"
+        },
+        {
+          "id": "vehicle-wraps",
+          "title": "VEHICLE WRAPS",
+          "url": "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=300&h=200&fit=crop"
+        }
+      ]
+    },
+    {
+      "id": "digital",
+      "title": "DIGITAL PRINTING",
+      "images": [
+        {
+          "id": "photo-prints",
+          "title": "PHOTO PRINTS",
+          "url": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=300&h=200&fit=crop"
+        },
+        {
+          "id": "canvas-prints",
+          "title": "CANVAS PRINTS",
+          "url": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=200&fit=crop"
+        },
+        {
+          "id": "fine-art",
+          "title": "FINE ART",
+          "url": "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=300&h=200&fit=crop"
+        },
+        {
+          "id": "large-format",
+          "title": "LARGE FORMAT",
+          "url": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop"
+        },
+        {
+          "id": "labels-stickers",
+          "title": "LABELS & STICKERS",
+          "url": "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=300&h=200&fit=crop"
+        }
+      ]
+    },
+    {
+      "id": "packaging",
+      "title": "PACKAGING",
+      "images": [
+        {
+          "id": "boxes",
+          "title": "BOXES",
+          "url": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=300&h=200&fit=crop"
+        },
+        {
+          "id": "bags",
+          "title": "BAGS",
+          "url": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=300&h=200&fit=crop"
+        },
+        {
+          "id": "gift-wrap",
+          "title": "GIFT WRAP",
+          "url": "https://images.unsplash.com/photo-1549298916-f52d724204b4?w=300&h=200&fit=crop"
+        },
+        {
+          "id": "product-packaging",
+          "title": "PRODUCT PACKAGING",
+          "url": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=300&h=200&fit=crop"
+        },
+        {
+          "id": "shipping-materials",
+          "title": "SHIPPING MATERIALS",
+          "url": "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=300&h=200&fit=crop"
+        }
+      ]
+    },
+    {
+      "id": "consultation",
+      "title": "CONSULTATION",
+      "images": [
+        {
+          "id": "design-consultation",
+          "title": "DESIGN CONSULTATION",
+          "url": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=300&h=200&fit=crop"
+        },
+        {
+          "id": "brand-strategy",
+          "title": "BRAND STRATEGY",
+          "url": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=300&h=200&fit=crop"
+        },
+        {
+          "id": "project-planning",
+          "title": "PROJECT PLANNING",
+          "url": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=300&h=200&fit=crop"
+        },
+        {
+          "id": "cost-estimation",
+          "title": "COST ESTIMATION",
+          "url": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=300&h=200&fit=crop"
+        },
+        {
+          "id": "technical-support",
+          "title": "TECHNICAL SUPPORT",
+          "url": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=300&h=200&fit=crop"
+        }
+      ]
+    },
+    {
+      "id": "other",
+      "title": "OTHER",
+      "images": [
+        {
+          "id": "custom-projects",
+          "title": "CUSTOM PROJECTS",
+          "url": "https://images.unsplash.com/photo-1503149779833-1de50ebe5f8a?w=300&h=200&fit=crop"
+        },
+        {
+          "id": "specialty-printing",
+          "title": "SPECIALTY PRINTING",
+          "url": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=300&h=200&fit=crop"
+        },
+        {
+          "id": "installation",
+          "title": "INSTALLATION",
+          "url": "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=300&h=200&fit=crop"
+        },
+        {
+          "id": "maintenance",
+          "title": "MAINTENANCE",
+          "url": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=300&h=200&fit=crop"
+        },
+        {
+          "id": "emergency-services",
+          "title": "EMERGENCY SERVICES",
+          "url": "https://images.unsplash.com/photo-1551721434-8b94ddff0e6d?w=300&h=200&fit=crop"
+        }
+      ]
+    }
+  ]
+}

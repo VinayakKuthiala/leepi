@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Premium Visiting Card",
+    "img": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=400&h=300&fit=crop&crop=center",
+    "description": "High-quality, full-color visiting cards with a premium matte finish. Perfect for making a lasting impression."
+  },
+  {
+    "name": "LetterPad Classic",
+    "img": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=300&fit=crop&crop=center",
+    "description": "Elegant letterpads for your business or personal use. Smooth paper and crisp printing for a professional look."
+  },
+  {
+    "name": "Custom Envelope",
+    "img": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=400&h=300&fit=crop&crop=center",
+    "description": "Personalized envelopes with your branding. Add a professional touch to your correspondence."
+  },
+  {
+    "name": "Business Brochure",
+    "img": "https://images.unsplash.com/photo-1464983953574-0892a716854b?w=400&h=300&fit=crop&crop=center",
+    "description": "Vibrant, high-quality brochures to showcase your business, products, or services in style."
+  }
+]
