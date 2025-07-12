@@ -7,18 +7,18 @@ import Image from "next/image";
 const carouselImages = [
   {
     id: 1,
-    src: "https://images.unsplash.com/photo-1586953208448-b95a79798f07?height=500&width=1200",
-    alt: "Slide 1",
+    src: "https://images.unsplash.com/photo-1586953208448-b95a79798f07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
+    alt: "Professional Business Cards - Premium printing services for your brand identity",
   },
   {
     id: 2,
-    src: "https://images.unsplash.com/photo-1749497683197-ae96f3cb92f4?q=80&w=918&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?height=500&width=1200",
-    alt: "Slide 2",
+    src: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
+    alt: "Modern Office Printing - High-quality document and marketing material printing",
   },
   {
     id: 3,
-    src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?height=500&width=1200",
-    alt: "Slide 3",
+    src: "https://images.unsplash.com/photo-1497486751825-1233686d5d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
+    alt: "Creative Design Studio - Professional graphic design and printing solutions",
   },
 ];
 
@@ -59,7 +59,7 @@ export default function Component() {
 
     setTimeout(() => {
       setCurrentSlide(
-        (prev) => (prev - 1 + carouselImages.length) % carouselImages.length,
+        (prev) => (prev - 1 + carouselImages.length) % carouselImages.length
       );
       setIsTransitioning(false);
     }, 700);
