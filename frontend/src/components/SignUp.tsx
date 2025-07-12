@@ -10,13 +10,12 @@ const SignUp = () => {
 
   const onSubmit = async (formData: any) => {
     try {
-        const formdata= new FormData();
-        formdata.append("name", formData.name);
-        formdata.append("email", formData.email);
-        formdata.append("password", formData.password);
+      const formdata = new FormData();
+      formdata.append("name", formData.name);
+      formdata.append("email", formData.email);
+      formdata.append("password", formData.password);
 
-
-        //API call for sign up
+      //API call for sign up
       await new Promise((res) => setTimeout(res, 1000));
       toast.success("Sign up successful! Welcome aboard.");
     } catch (error) {
@@ -24,8 +23,8 @@ const SignUp = () => {
     }
   };
 
-
-  const inputClassName="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none placeholder:text-gray-300 text-black"
+  const inputClassName =
+    "w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none placeholder:text-gray-300 text-black";
   return (
     <div className="flex flex-col gap-6 bg-white border border-gray-200 p-8 rounded-xl shadow-lg max-w-lg mx-auto my-8">
       <h2 className="text-2xl font-bold text-gray-800 mb-2">

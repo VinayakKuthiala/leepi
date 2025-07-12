@@ -19,14 +19,14 @@ const GetInTouch = () => {
   const handleInputChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    >,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
-    
+
     // Handle service type selection to show images
     if (name === "serviceType") {
       setSelectedServiceType(value);
@@ -187,11 +187,15 @@ const GetInTouch = () => {
               {selectedServiceType && (
                 <div className="space-y-3">
                   <h3 className="text-sm font-medium text-gray-700 uppercase tracking-wide">
-                    {serviceTypesData.serviceTypes.find(s => s.id === selectedServiceType)?.title}
+                    {
+                      serviceTypesData.serviceTypes.find(
+                        (s) => s.id === selectedServiceType,
+                      )?.title
+                    }
                   </h3>
                   <div className="grid grid-cols-4 gap-2">
                     {serviceTypesData.serviceTypes
-                      .find(s => s.id === selectedServiceType)
+                      .find((s) => s.id === selectedServiceType)
                       ?.images.map((image) => (
                         <div key={image.id} className="text-center">
                           <div className="aspect-square rounded-lg overflow-hidden border border-gray-200 mb-1">

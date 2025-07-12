@@ -13,6 +13,7 @@ import {
   Lightbulb,
   Shield,
 } from "lucide-react";
+import ScrollToTop from "@/components/ui/ScrollToTop";
 
 export default function About() {
   return (
@@ -159,11 +160,14 @@ export default function About() {
                     Software Engineer
                   </p>
                   <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-                    A software engineer with a passion for innovation, I
-                    lead the development of Leepi's cutting-edge software
+                    A software engineer with a passion for innovation, I lead
+                    the development of Leepi's cutting-edge software
                   </p>
                   <div className="flex items-center space-x-4">
-                    <a href="mailto:isouradeephazra@gmail.com" className="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                    <a
+                      href="mailto:isouradeephazra@gmail.com"
+                      className="flex items-center text-sm text-gray-500 dark:text-gray-400"
+                    >
                       <Mail className="w-4 h-4 mr-2" />
                       isouradeephazra@gmail.com
                     </a>
@@ -280,7 +284,7 @@ export default function About() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-white dark:bg-gray-800">
+      <section id="faq" className="py-20 bg-white dark:bg-gray-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
@@ -306,7 +310,11 @@ export default function About() {
                       What printing services does Leepi offer?
                     </h3>
                     <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                      We offer a comprehensive range of printing services including business cards, brochures, flyers, posters, banners, booklets, catalogs, and custom printing solutions. Our state-of-the-art equipment ensures high-quality results for all your printing needs.
+                      We offer a comprehensive range of printing services
+                      including business cards, brochures, flyers, posters,
+                      banners, booklets, catalogs, and custom printing
+                      solutions. Our state-of-the-art equipment ensures
+                      high-quality results for all your printing needs.
                     </p>
                   </div>
                 </div>
@@ -327,7 +335,11 @@ export default function About() {
                       How long does it take to complete an order?
                     </h3>
                     <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                      Standard orders typically take 2-5 business days depending on the complexity and quantity. Rush orders can be completed within 24-48 hours for an additional fee. We'll provide you with an accurate timeline when you place your order.
+                      Standard orders typically take 2-5 business days depending
+                      on the complexity and quantity. Rush orders can be
+                      completed within 24-48 hours for an additional fee. We'll
+                      provide you with an accurate timeline when you place your
+                      order.
                     </p>
                   </div>
                 </div>
@@ -348,7 +360,11 @@ export default function About() {
                       Do you offer design services?
                     </h3>
                     <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                      Yes! Our talented design team can help create stunning designs for your projects. Whether you need a complete design from scratch or modifications to existing artwork, we're here to bring your vision to life with professional, eye-catching designs.
+                      Yes! Our talented design team can help create stunning
+                      designs for your projects. Whether you need a complete
+                      design from scratch or modifications to existing artwork,
+                      we're here to bring your vision to life with professional,
+                      eye-catching designs.
                     </p>
                   </div>
                 </div>
@@ -369,7 +385,11 @@ export default function About() {
                       What file formats do you accept?
                     </h3>
                     <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                      We accept various file formats including PDF, AI, EPS, PSD, JPG, PNG, and TIFF. For best results, we recommend high-resolution PDF files with embedded fonts and proper color profiles. Our team can help optimize your files if needed.
+                      We accept various file formats including PDF, AI, EPS,
+                      PSD, JPG, PNG, and TIFF. For best results, we recommend
+                      high-resolution PDF files with embedded fonts and proper
+                      color profiles. Our team can help optimize your files if
+                      needed.
                     </p>
                   </div>
                 </div>
@@ -390,7 +410,10 @@ export default function About() {
                       Do you offer bulk discounts?
                     </h3>
                     <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                      Absolutely! We offer competitive bulk pricing for large quantity orders. The more you print, the more you save. Contact us with your requirements and we'll provide you with a custom quote that fits your budget and timeline.
+                      Absolutely! We offer competitive bulk pricing for large
+                      quantity orders. The more you print, the more you save.
+                      Contact us with your requirements and we'll provide you
+                      with a custom quote that fits your budget and timeline.
                     </p>
                   </div>
                 </div>
@@ -411,7 +434,11 @@ export default function About() {
                       What is your quality guarantee?
                     </h3>
                     <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                      We stand behind our work with a 100% satisfaction guarantee. If you're not completely happy with your order, we'll work with you to make it right. This includes reprinting at no cost if there are any quality issues or errors on our part.
+                      We stand behind our work with a 100% satisfaction
+                      guarantee. If you're not completely happy with your order,
+                      we'll work with you to make it right. This includes
+                      reprinting at no cost if there are any quality issues or
+                      errors on our part.
                     </p>
                   </div>
                 </div>
@@ -424,7 +451,8 @@ export default function About() {
             <div className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl p-8 text-white">
               <h3 className="text-2xl font-bold mb-4">Still have questions?</h3>
               <p className="text-blue-100 mb-6">
-                Our friendly team is here to help you with any questions or concerns.
+                Our friendly team is here to help you with any questions or
+                concerns.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
@@ -444,6 +472,7 @@ export default function About() {
           </div>
         </div>
       </section>
+      <ScrollToTop />
     </div>
   );
 }

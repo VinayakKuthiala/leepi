@@ -1,102 +1,109 @@
-"use client"
+"use client";
 
-import { useState, useEffect, useRef } from "react"
-import { ChevronLeft, ChevronRight } from "lucide-react"
-import Image from "next/image"
-import categoriesData from "./Category.json"
+import { useState, useEffect, useRef } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
+import categoriesData from "./Category.json";
 
 interface Subcategory {
-  id: number
-  title: string
-  image?: string
+  id: number;
+  title: string;
+  image?: string;
 }
 
 interface Category {
-  id: number
-  title: string
-  image: string
-  subcategories: Subcategory[]
+  id: number;
+  title: string;
+  image: string;
+  subcategories: Subcategory[];
 }
 
 const CategoryCarousel = () => {
-  const [currentSlide, setCurrentSlide] = useState(0)
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
-  const [isTransitioning, setIsTransitioning] = useState(false)
-  const timerRef = useRef<NodeJS.Timeout | null>(null)
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  const categories: Category[] = categoriesData.categories
+  const categories: Category[] = categoriesData.categories;
 
   // Auto-slide functionality
   useEffect(() => {
-    if (!isAutoPlaying) return
+    if (!isAutoPlaying) return;
 
     timerRef.current = setInterval(() => {
-      nextSlide()
-    }, 6000)
+      nextSlide();
+    }, 6000);
 
     return () => {
       if (timerRef.current) {
-        clearInterval(timerRef.current)
+        clearInterval(timerRef.current);
       }
-    }
-  }, [isAutoPlaying])
+    };
+  }, [isAutoPlaying]);
 
   const nextSlide = () => {
-    if (isTransitioning) return
-    setIsTransitioning(true)
+    if (isTransitioning) return;
+    setIsTransitioning(true);
 
     setTimeout(() => {
-      setCurrentSlide((prev) => (prev + 1) % categories.length)
-      setIsTransitioning(false)
-    }, 700)
-  }
+      setCurrentSlide((prev) => (prev + 1) % categories.length);
+      setIsTransitioning(false);
+    }, 700);
+  };
 
   const prevSlide = () => {
-    if (isTransitioning) return
-    setIsTransitioning(true)
+    if (isTransitioning) return;
+    setIsTransitioning(true);
 
     setTimeout(() => {
-      setCurrentSlide((prev) => (prev - 1 + categories.length) % categories.length)
-      setIsTransitioning(false)
-    }, 700)
-  }
+      setCurrentSlide(
+        (prev) => (prev - 1 + categories.length) % categories.length,
+      );
+      setIsTransitioning(false);
+    }, 700);
+  };
 
   const goToSlide = (index: number) => {
-    if (isTransitioning || index === currentSlide) return
-    setIsTransitioning(true)
-    setIsAutoPlaying(false)
+    if (isTransitioning || index === currentSlide) return;
+    setIsTransitioning(true);
+    setIsAutoPlaying(false);
 
     setTimeout(() => {
-      setCurrentSlide(index)
-      setIsTransitioning(false)
-      setTimeout(() => setIsAutoPlaying(true), 10000)
-    }, 700)
-  }
+      setCurrentSlide(index);
+      setIsTransitioning(false);
+      setTimeout(() => setIsAutoPlaying(true), 10000);
+    }, 700);
+  };
 
   const goToPrevious = () => {
-    prevSlide()
-    setIsAutoPlaying(false)
-    setTimeout(() => setIsAutoPlaying(true), 10000)
-  }
+    prevSlide();
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 10000);
+  };
 
   const goToNext = () => {
-    nextSlide()
-    setIsAutoPlaying(false)
-    setTimeout(() => setIsAutoPlaying(true), 10000)
-  }
+    nextSlide();
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 10000);
+  };
 
   // Render subcategories based on count
   const renderSubcategories = (subcategories: Subcategory[]) => {
-    const count = subcategories.length
+    const count = subcategories.length;
     // Filter only subcategories with images for rendering
-    const subcategoriesWithImages = subcategories.filter(subcat => subcat.image)
+    const subcategoriesWithImages = subcategories.filter(
+      (subcat) => subcat.image,
+    );
 
     switch (count) {
       case 2:
         return (
           <div className="grid grid-rows-2 gap-2 h-full">
             {subcategoriesWithImages.map((subcat, index) => (
-              <div key={subcat.id} className="relative group cursor-pointer overflow-hidden rounded-lg">
+              <div
+                key={subcat.id}
+                className="relative group cursor-pointer overflow-hidden rounded-lg"
+              >
                 <Image
                   src={subcat.image!}
                   alt={subcat.title}
@@ -105,12 +112,14 @@ const CategoryCarousel = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 <div className="absolute bottom-2 left-2 right-2">
-                  <h4 className="text-white text-sm font-semibold truncate">{subcat.title}</h4>
+                  <h4 className="text-white text-sm font-semibold truncate">
+                    {subcat.title}
+                  </h4>
                 </div>
               </div>
             ))}
           </div>
-        )
+        );
 
       case 3:
         return (
@@ -125,13 +134,18 @@ const CategoryCarousel = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               <div className="absolute bottom-2 left-2 right-2">
-                <h4 className="text-white text-sm font-semibold truncate">{subcategoriesWithImages[0]?.title}</h4>
+                <h4 className="text-white text-sm font-semibold truncate">
+                  {subcategoriesWithImages[0]?.title}
+                </h4>
               </div>
             </div>
             {/* Bottom half - two images */}
             <div className="grid grid-cols-2 gap-2">
               {subcategoriesWithImages.slice(1).map((subcat) => (
-                <div key={subcat.id} className="relative group cursor-pointer overflow-hidden rounded-lg">
+                <div
+                  key={subcat.id}
+                  className="relative group cursor-pointer overflow-hidden rounded-lg"
+                >
                   <Image
                     src={subcat.image!}
                     alt={subcat.title}
@@ -140,19 +154,24 @@ const CategoryCarousel = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   <div className="absolute bottom-1 left-1 right-1">
-                    <h4 className="text-white text-xs font-semibold truncate">{subcat.title}</h4>
+                    <h4 className="text-white text-xs font-semibold truncate">
+                      {subcat.title}
+                    </h4>
                   </div>
                 </div>
               ))}
             </div>
           </div>
-        )
+        );
 
       case 4:
         return (
           <div className="grid grid-cols-2 grid-rows-2 gap-2 h-full">
             {subcategoriesWithImages.map((subcat) => (
-              <div key={subcat.id} className="relative group cursor-pointer overflow-hidden rounded-lg">
+              <div
+                key={subcat.id}
+                className="relative group cursor-pointer overflow-hidden rounded-lg"
+              >
                 <Image
                   src={subcat.image!}
                   alt={subcat.title}
@@ -161,21 +180,25 @@ const CategoryCarousel = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 <div className="absolute bottom-1 left-1 right-1">
-                  <h4 className="text-white text-xs font-semibold truncate">{subcat.title}</h4>
+                  <h4 className="text-white text-xs font-semibold truncate">
+                    {subcat.title}
+                  </h4>
                 </div>
               </div>
             ))}
           </div>
-        )
+        );
 
       default:
-        return null
+        return null;
     }
-  }
+  };
 
   const renderCategoryLayout = (category: Category) => {
-    const hasSubcategories = category.subcategories.length > 0
-    const hasSubcategoryImages = category.subcategories.some(subcat => subcat.image)
+    const hasSubcategories = category.subcategories.length > 0;
+    const hasSubcategoryImages = category.subcategories.some(
+      (subcat) => subcat.image,
+    );
 
     if (!hasSubcategories) {
       // Full width category image with title overlay
@@ -189,11 +212,13 @@ const CategoryCarousel = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
           <div className="absolute bottom-8 left-8 right-8 text-center">
-            <h2 className="text-white text-3xl md:text-4xl font-bold mb-2">{category.title}</h2>
+            <h2 className="text-white text-3xl md:text-4xl font-bold mb-2">
+              {category.title}
+            </h2>
             <p className="text-white/90 text-lg">Explore our complete range</p>
           </div>
         </div>
-      )
+      );
     }
 
     // If subcategories have no images, show them as text under the category title
@@ -208,20 +233,24 @@ const CategoryCarousel = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
           <div className="absolute bottom-8 left-8 right-8 text-center">
-            <h2 className="text-white text-3xl md:text-4xl font-bold mb-4">{category.title}</h2>
+            <h2 className="text-white text-3xl md:text-4xl font-bold mb-4">
+              {category.title}
+            </h2>
             <div className="space-y-2">
               {category.subcategories.map((subcat) => (
-                <div 
-                  key={subcat.id} 
+                <div
+                  key={subcat.id}
                   className="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2 cursor-pointer hover:bg-white/30 transition-colors duration-200"
                 >
-                  <p className="text-white text-lg font-medium">{subcat.title}</p>
+                  <p className="text-white text-lg font-medium">
+                    {subcat.title}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
         </div>
-      )
+      );
     }
 
     // Split layout - category on left, subcategories on right
@@ -237,8 +266,12 @@ const CategoryCarousel = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
           <div className="absolute bottom-4 left-4 right-4">
-            <h2 className="text-white text-xl md:text-2xl font-bold mb-1">{category.title}</h2>
-            <p className="text-white/90 text-sm">{category.subcategories.length} subcategories</p>
+            <h2 className="text-white text-xl md:text-2xl font-bold mb-1">
+              {category.title}
+            </h2>
+            <p className="text-white/90 text-sm">
+              {category.subcategories.length} subcategories
+            </p>
           </div>
         </div>
 
@@ -247,8 +280,8 @@ const CategoryCarousel = () => {
           {renderSubcategories(category.subcategories)}
         </div>
       </div>
-    )
-  }
+    );
+  };
 
   return (
     <div className="relative w-full mx-auto bg-white rounded-lg overflow-hidden shadow-lg">
@@ -329,7 +362,7 @@ const CategoryCarousel = () => {
         </div>
       </div> */}
     </div>
-  )
-}
+  );
+};
 
-export default CategoryCarousel
+export default CategoryCarousel;

@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { useState, useEffect, useRef } from "react"
-import { ChevronLeft, ChevronRight } from "lucide-react"
-import Image from "next/image"
+import { useState, useEffect, useRef } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
 
 const carouselImages = [
   {
@@ -20,73 +20,75 @@ const carouselImages = [
     src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?height=500&width=1200",
     alt: "Slide 3",
   },
-]
+];
 
 export default function Component() {
-  const [currentSlide, setCurrentSlide] = useState(0)
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
-  const [isTransitioning, setIsTransitioning] = useState(false)
-  const timerRef = useRef(null)
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const timerRef = useRef(null);
 
   // Auto-slide functionality
   useEffect(() => {
-    if (!isAutoPlaying) return
+    if (!isAutoPlaying) return;
 
     timerRef.current = setInterval(() => {
-      nextSlide()
-    }, 5000)
+      nextSlide();
+    }, 5000);
 
     return () => {
       if (timerRef.current) {
-        clearInterval(timerRef.current)
+        clearInterval(timerRef.current);
       }
-    }
-  }, [isAutoPlaying])
+    };
+  }, [isAutoPlaying]);
 
   const nextSlide = () => {
-    if (isTransitioning) return
-    setIsTransitioning(true)
+    if (isTransitioning) return;
+    setIsTransitioning(true);
 
     setTimeout(() => {
-      setCurrentSlide((prev) => (prev + 1) % carouselImages.length)
-      setIsTransitioning(false)
-    }, 700) // Match the CSS transition duration
-  }
+      setCurrentSlide((prev) => (prev + 1) % carouselImages.length);
+      setIsTransitioning(false);
+    }, 700); // Match the CSS transition duration
+  };
 
   const prevSlide = () => {
-    if (isTransitioning) return
-    setIsTransitioning(true)
+    if (isTransitioning) return;
+    setIsTransitioning(true);
 
     setTimeout(() => {
-      setCurrentSlide((prev) => (prev - 1 + carouselImages.length) % carouselImages.length)
-      setIsTransitioning(false)
-    }, 700)
-  }
+      setCurrentSlide(
+        (prev) => (prev - 1 + carouselImages.length) % carouselImages.length,
+      );
+      setIsTransitioning(false);
+    }, 700);
+  };
 
   const goToSlide = (index) => {
-    if (isTransitioning || index === currentSlide) return
-    setIsTransitioning(true)
-    setIsAutoPlaying(false)
+    if (isTransitioning || index === currentSlide) return;
+    setIsTransitioning(true);
+    setIsAutoPlaying(false);
 
     setTimeout(() => {
-      setCurrentSlide(index)
-      setIsTransitioning(false)
+      setCurrentSlide(index);
+      setIsTransitioning(false);
       // Resume auto-play after 10 seconds of inactivity
-      setTimeout(() => setIsAutoPlaying(true), 10000)
-    }, 700)
-  }
+      setTimeout(() => setIsAutoPlaying(true), 10000);
+    }, 700);
+  };
 
   const goToPrevious = () => {
-    prevSlide()
-    setIsAutoPlaying(false)
-    setTimeout(() => setIsAutoPlaying(true), 10000)
-  }
+    prevSlide();
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 10000);
+  };
 
   const goToNext = () => {
-    nextSlide()
-    setIsAutoPlaying(false)
-    setTimeout(() => setIsAutoPlaying(true), 10000)
-  }
+    nextSlide();
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 10000);
+  };
 
   return (
     <div className="relative w-full max-w-6xl mx-auto bg-white rounded-lg overflow-hidden shadow-lg">
@@ -152,5 +154,5 @@ export default function Component() {
         ))}
       </div>
     </div>
-  )
+  );
 }

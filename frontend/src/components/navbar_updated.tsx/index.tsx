@@ -5,16 +5,29 @@ import Link from "next/link";
 import { Menu, X, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import CategoriesData from "./categories.json";
-import ThemeToggle from "@/components/ThemeToggle";
+// import ThemeToggle from "@/components/ThemeToggle";
 
 const Navbar_Products = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
   const [hoveredSubcategory, setHoveredSubcategory] = useState<string | null>(
-    null
+    null,
   );
 
-    const navRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 450);
+    };
+    handleResize(); // Set initial state
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const navRef = useRef(null);
   const [navHeight, setNavHeight] = useState(0);
 
   useEffect(() => {
@@ -27,20 +40,29 @@ const Navbar_Products = () => {
 
   // Mobile accordion state
   const [mobileCategoryOpen, setMobileCategoryOpen] = useState<string | null>(
-    null
+    null,
   );
   const [mobileSubcategoryOpen, setMobileSubcategoryOpen] = useState<
     string | null
   >(null);
 
+  const MenuArr = [
+    { title: "Home", link: "/" },
+    { title: "About", link: "/about" },
+    { title: "Services", link: "/services" },
+    { title: "Contact", link: "/contact" },
+  ];
   return (
-    <nav ref={navRef} className="bg-white dark:bg-gray-800 shadow-md px-6 py-3 relative z-40 transition-colors duration-200">
+    <nav
+      ref={navRef}
+      className="bg-white dark:bg-gray-800 shadow-md px-6 py-3 relative z-40 transition-colors duration-200"
+    >
       <div className="w-full mx-auto flex items-center justify-between">
         {/* Theme indicator - for debugging */}
         {/* <div className="hidden sm:flex absolute top-0 right-0 bg-green-500 dark:bg-purple-500 text-white text-xs px-2 py-1 rounded-bl">
           Theme Mode: <span className="dark:hidden">LIGHT</span><span className="hidden dark:inline">DARK</span>
         </div> */}
-        
+
         {/* Logo */}
         <div className="flex items-center">
           <div className="w-8 h-8 mr-2 flex space-x-1">
@@ -50,7 +72,7 @@ const Navbar_Products = () => {
             <div className="w-2 h-2 dark:bg-white bg-black rounded-full"></div>
           </div>
           {/* <span className="font-bold text-lg text-gray-800">YourCompany</span> */}
-          <Link href="/">
+          <Link prefetch={true} href="/">
             <Image
               src="/leepi_hindi_logo_trimmed.jpg"
               alt="leepi Logo"
@@ -63,17 +85,28 @@ const Navbar_Products = () => {
 
         {/* Menu items */}
         <div className="hidden md:flex space-x-6 text-gray-700 dark:text-gray-200 font-medium font-sans">
-          <Link href="/" className="hover:text-gray-900 dark:hover:text-white">Home</Link>
-          <Link href="/about" className="hover:text-gray-900 dark:hover:text-white">About</Link>
-          <Link href="/services" className="hover:text-gray-900 dark:hover:text-white">Services</Link>
-          <Link href="/contact" className="hover:text-gray-900 dark:hover:text-white">Contact</Link>
+          {MenuArr.map((item, idx) => {
+            return (
+              <Link
+                prefetch={true}
+                key={idx}
+                className="hover:text-gray-900 dark:hover:text-white"
+                href={item.link}
+              >
+                {item.title}
+              </Link>
+            );
+          })}
         </div>
 
         {/* Theme toggle and mobile menu */}
         <div className="flex items-center gap-4 md:hidden">
           {/* <ThemeToggle /> */}
           <div className="md:hidden">
-            <button onClick={() => setIsOpen(!isOpen)} className="text-gray-700 dark:text-gray-200">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-gray-700 dark:text-gray-200"
+            >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
@@ -104,7 +137,7 @@ const Navbar_Products = () => {
                       setMobileCategoryOpen(
                         mobileCategoryOpen === category?.category_name
                           ? null
-                          : category?.category_name
+                          : category?.category_name,
                       )
                     }
                   >
@@ -129,7 +162,7 @@ const Navbar_Products = () => {
                                 mobileSubcategoryOpen ===
                                   `${category?.category_name}__${subcategory?.subcategory_name}`
                                   ? null
-                                  : `${category?.category_name}__${subcategory?.subcategory_name}`
+                                  : `${category?.category_name}__${subcategory?.subcategory_name}`,
                               )
                             }
                           >
@@ -150,6 +183,7 @@ const Navbar_Products = () => {
                               {subcategory?.subcategory_products?.map(
                                 (product) => (
                                   <Link
+                                    prefetch={true}
                                     key={product?.product_name}
                                     href={product?.product_link}
                                     className="block py-2 px-2 text-xs text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded"
@@ -157,7 +191,7 @@ const Navbar_Products = () => {
                                   >
                                     {product?.product_name}
                                   </Link>
-                                )
+                                ),
                               )}
                             </div>
                           )}
@@ -171,8 +205,9 @@ const Navbar_Products = () => {
           </div>
         </div>
       )}
+
       {/* Categories Dropdown */}
-      {!isOpen && (
+      {!isMobile && (
         <div className="mt-4 relative w-full">
           <div className="flex justify-center items-center min-w-full">
             {CategoriesData?.categories?.map((category) => (
@@ -196,7 +231,10 @@ const Navbar_Products = () => {
 
                 {/* Full Width Subcategories Dropdown */}
                 {hoveredCategory === category?.category_name && (
-                  <div style={{top:navHeight-12}} className="fixed  left-0 w-screen bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 shadow-lg z-50 py-8 overflow-visible transition-all duration-500 ease-in-out animate-fade-slide">
+                  <div
+                    style={{ top: navHeight - 12 }}
+                    className="fixed  left-0 w-screen bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 shadow-lg z-50 py-8 overflow-visible transition-all duration-500 ease-in-out animate-fade-slide"
+                  >
                     <div className="w-full mx-auto px-6 overflow-visible">
                       <div className="flex justify-between items-start gap-8 overflow-visible z-50 relative">
                         {category?.subcategories?.map((subcategory) => (
@@ -205,12 +243,13 @@ const Navbar_Products = () => {
                             className="flex-1 text-center relative overflow-visible"
                             onMouseEnter={() =>
                               setHoveredSubcategory(
-                                subcategory?.subcategory_name
+                                subcategory?.subcategory_name,
                               )
                             }
                             onMouseLeave={() => setHoveredSubcategory(null)}
                           >
                             <Link
+                              prefetch={true}
                               href={subcategory?.subcategory_link}
                               className="block group hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg p-4 transition-colors duration-200"
                             >
@@ -249,6 +288,7 @@ const Navbar_Products = () => {
                                     {subcategory?.subcategory_products?.map(
                                       (product) => (
                                         <Link
+                                          prefetch={true}
                                           key={product?.product_name}
                                           href={product?.product_link}
                                           style={{ color: "black" }}
@@ -267,7 +307,7 @@ const Navbar_Products = () => {
                                             {product?.product_name}
                                           </span>
                                         </Link>
-                                      )
+                                      ),
                                     )}
                                   </div>
                                 </div>

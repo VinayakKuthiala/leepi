@@ -1,51 +1,67 @@
 "use client";
 
 const listItemClass =
-  "flex items-center gap-3 bg-white/80 rounded-xl p-4 shadow hover:shadow-lg transition";
+  "flex items-center gap-3 bg-white/80 dark:bg-gray-800/90 rounded-xl p-4 shadow hover:shadow-lg transition";
 const listItemIconClass =
-  "inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 text-blue-700 text-2xl";
+  "inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 text-2xl";
+
+const benefitsData = [
+  {
+    id: 1,
+    icon: "🎁",
+    text: "Exclusive offers & discounts",
+    isFullWidth: false,
+  },
+  {
+    id: 2,
+    icon: "📊",
+    text: "Personalized project dashboard",
+    isFullWidth: false,
+  },
+  {
+    id: 3,
+    icon: "⚡",
+    text: "Priority customer support",
+    isFullWidth: false,
+  },
+  {
+    id: 4,
+    icon: "📦",
+    text: "Easy order tracking & history",
+    isFullWidth: false,
+  },
+  {
+    id: 5,
+    icon: "🚀",
+    text: "Early access to new features",
+    isFullWidth: true,
+  },
+];
 
 const WhatYouGetSection = () => (
-  <div className="mt-16 flex flex-col items-center justify-center gap-8 bg-gradient-to-br from-blue-100/80 via-white to-blue-50 rounded-3xl shadow-2xl p-10 max-w-3xl mx-auto border border-blue-200 relative overflow-hidden">
-    <div className="absolute -top-10 -left-10 w-40 h-40 bg-blue-200/30 rounded-full blur-2xl z-0" />
-    <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-blue-400/20 rounded-full blur-2xl z-0" />
-    <h3 className="text-3xl font-extrabold text-blue-900 mb-2 z-10 drop-shadow">
+  <div className="mt-8 md:mt-12 lg:mt-16 flex flex-col items-center justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 bg-gradient-to-br from-blue-100/80 via-white to-blue-50 rounded-xl sm:rounded-2xl  md:rounded-3xl shadow-2xl p-4 sm:p-6 md:p-8  lg:p-10 max-w-3xl mx-auto border border-blue-200 relative overflow-hidden">
+    <div className="absolute -top-10 -left-10 w-40 h-40 bg-blue-200/30 dark:bg-blue-700/20 rounded-full blur-2xl z-0" />
+    <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-blue-400/20 dark:bg-blue-500/20 rounded-full blur-2xl z-0" />
+    <h3 className="text-3xl font-extrabold text-blue-900 dark:text-white mb-2 z-10 drop-shadow">
       Unlock Premium Benefits
     </h3>
-    <p className="text-lg text-blue-700 mb-4 z-10">
+    <p className=" text-base md:text-lg text-blue-700 dark:text-blue-400 mb-4 z-10">
       Sign up and elevate your creative journey with us!
     </p>
     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full z-10">
-      <li className={listItemClass}>
-        <span className={listItemIconClass}>🎁</span>
-        <span className="font-medium text-blue-900">
-          Exclusive offers & discounts
-        </span>
-      </li>
-      <li className={listItemClass}>
-        <span className={listItemIconClass}>📊</span>
-        <span className="font-medium text-blue-900">
-          Personalized project dashboard
-        </span>
-      </li>
-      <li className={listItemClass}>
-        <span className={listItemIconClass}>⚡</span>
-        <span className="font-medium text-blue-900">
-          Priority customer support
-        </span>
-      </li>
-      <li className={listItemClass}>
-        <span className={listItemIconClass}>📦</span>
-        <span className="font-medium text-blue-900">
-          Easy order tracking & history
-        </span>
-      </li>
-      <li className={listItemClass + "col-span-full sm:col-span-2"}>
-        <span className={listItemIconClass}>🚀</span>
-        <span className="font-medium text-blue-900">
-          Early access to new features
-        </span>
-      </li>
+      {benefitsData.map((benefit) => (
+        <li
+          key={benefit.id}
+          className={`${listItemClass} ${
+            benefit.isFullWidth ? "col-span-full sm:col-span-2" : ""
+          }`}
+        >
+          <span className={listItemIconClass}>{benefit.icon}</span>
+          <span className="font-medium text-blue-900 dark:text-white">
+            {benefit.text}
+          </span>
+        </li>
+      ))}
     </ul>
     <a
       href="/signup"

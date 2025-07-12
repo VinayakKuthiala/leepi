@@ -1,12 +1,8 @@
-import VisittingCard from '@/components/VisittingCard/VisittingCard'
-import React from 'react'
+import VisittingCard from "@/components/VisittingCard/VisittingCard";
+import React from "react";
 
 const page = () => {
-  return (
-   
-        <VisittingCard/>
-    
-  )
-}
+  return <VisittingCard />;
+};
 
-export default page
+export default page;

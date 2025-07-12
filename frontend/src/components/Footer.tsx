@@ -1,8 +1,106 @@
-import React from 'react'
-import Link from 'next/link'
-import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react'
+import React from "react";
+import Link from "next/link";
+import {
+  Facebook,
+  Twitter,
+  Instagram,
+  Linkedin,
+  Mail,
+  Phone,
+  MapPin,
+} from "lucide-react";
 
 const Footer = () => {
+  const SocialLinks = [
+    {
+      name: "Facebook",
+      url: "https://facebook.com",
+      icon: <Facebook size={20} />,
+    },
+    {
+      name: "Twitter",
+      url: "https://twitter.com",
+      icon: <Twitter size={20} />,
+    },
+    {
+      name: "Instagram",
+      url: "https://instagram.com",
+      icon: <Instagram size={20} />,
+    },
+    {
+      name: "Linkedin",
+      url: "https://linkedin.com",
+      icon: <Linkedin size={20} />,
+    },
+  ];
+
+  const QuickLinks = [
+    {
+      label: "About Us",
+      href: "/about",
+    },
+    {
+      label: "Contact",
+      href: "/contact",
+    },
+    {
+      label: "Blog",
+      href: "#",
+    },
+    {
+      label: "FAQ",
+      href: "/about#faq",
+    },
+  ];
+
+  const Legal = [
+    {
+      label: "Terms & Conditions",
+      href: "/terms-and-conditions",
+    },
+    {
+      label: "Privacy Policy",
+      href: "/privacy-policy",
+    },
+    {
+      label: "Refund Policy",
+      href: "#",
+    },
+    {
+      label: "Shipping Policy",
+      href: "#",
+    },
+  ];
+
+  const ContactInfo = [
+    {
+      label: "Kolkata, 700001, India",
+      icon: <MapPin size={16} className="text-gray-400" />,
+    },
+    {
+      label: "+000000000",
+      icon: <Phone size={16} className="text-gray-400" />,
+    },
+    {
+      label: "info@leepi.com",
+      icon: <Mail size={16} className="text-gray-400" />,
+    },
+  ];
+
+  const BottomFooter = [
+    {
+      label: "Terms & Conditions",
+      href: "/terms-and-conditions",
+    },
+    {
+      label: "Privacy Policy",
+      href: "/privacy-policy",
+    },
+    {
+      label: "Sitemap",
+      href: "/sitemap",
+    },
+  ];
   return (
     <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -11,49 +109,29 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <img 
-                src="/leepi_english_logo.jpg" 
-                alt="Leepi Logo" 
+              <img
+                src="/leepi_english_logo.jpg"
+                alt="Leepi Logo"
                 className="h-10 w-auto"
               />
             </div>
             <p className="text-gray-300 text-sm">
-              Leepi is your trusted platform for quality products and exceptional service. 
-              We're committed to bringing you the best shopping experience.
+              Leepi is your trusted platform for quality products and
+              exceptional service. We're committed to bringing you the best
+              shopping experience.
             </p>
             <div className="flex space-x-4">
-              <a 
-                href="https://facebook.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors duration-200"
-              >
-                <Facebook size={20} />
-              </a>
-              <a 
-                href="https://twitter.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors duration-200"
-              >
-                <Twitter size={20} />
-              </a>
-              <a 
-                href="https://instagram.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors duration-200"
-              >
-                <Instagram size={20} />
-              </a>
-              <a 
-                href="https://linkedin.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors duration-200"
-              >
-                <Linkedin size={20} />
-              </a>
+              {SocialLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white transition-colors duration-200"
+                >
+                  {link.icon}
+                </a>
+              ))}
             </div>
           </div>
 
@@ -61,27 +139,17 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Quick Links</h3>
             <ul className="space-y-2 text-sm">
-              <li>
-                <Link href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
-                  About Us
-                </Link>
-              </li>
-              
-              <li>
-                <Link href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
-                  FAQ
-                </Link>
-              </li>
+              {QuickLinks.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    prefetch={true}
+                    href={link.href}
+                    className="text-gray-300 hover:text-white transition-colors duration-200"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -89,26 +157,17 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Legal</h3>
             <ul className="space-y-2 text-sm">
-              <li>
-                <Link href="/terms-and-conditions" className="text-gray-300 hover:text-white transition-colors duration-200">
-                  Terms & Conditions
-                </Link>
-              </li>
-              <li>
-                <Link href="/privacy-policy" className="text-gray-300 hover:text-white transition-colors duration-200">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
-                  Refund Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
-                  Shipping Policy
-                </Link>
-              </li>
+              {Legal.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    prefetch={true}
+                    href={link.href}
+                    className="text-gray-300 hover:text-white transition-colors duration-200"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -116,20 +175,12 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Contact Info</h3>
             <div className="space-y-3 text-sm">
-              <div className="flex items-center space-x-2">
-                <MapPin size={16} className="text-gray-400" />
-                <span className="text-gray-300">
-                  Kolkata, 700001, India
-                </span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Phone size={16} className="text-gray-400" />
-                <span className="text-gray-300">+000000000</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Mail size={16} className="text-gray-400" />
-                <span className="text-gray-300">info@leepi.com</span>
-              </div>
+              {ContactInfo.map((info) => (
+                <div key={info.label} className="flex items-center space-x-2">
+                  {info.icon}
+                  <span className="text-gray-300">{info.label}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -163,21 +214,22 @@ const Footer = () => {
               © {new Date().getFullYear()} Leepi. All rights reserved.
             </div>
             <div className="flex space-x-6 text-sm">
-              <Link href="/terms-and-conditions" className="text-gray-400 hover:text-white transition-colors duration-200">
-                Terms & Conditions
-              </Link>
-              <Link href="/privacy-policy" className="text-gray-400 hover:text-white transition-colors duration-200">
-                Privacy Policy
-              </Link>
-              <Link href="/sitemap" className="text-gray-400 hover:text-white transition-colors duration-200">
-                Sitemap
-              </Link>
+              {BottomFooter.map((link) => (
+                <Link
+                  prefetch={true}
+                  key={link.label}
+                  href={link.href}
+                  className="text-gray-400 hover:text-white transition-colors duration-200"
+                >
+                  {link.label}
+                </Link>
+              ))}
             </div>
           </div>
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

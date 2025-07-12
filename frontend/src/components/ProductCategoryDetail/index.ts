@@ -1,1 +1,1 @@
-export { default as categoryData } from './categoryDetail.json';
+export { default as categoryData } from "./categoryDetail.json";

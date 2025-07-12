@@ -1,10 +1,9 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { useState } from "react";
+import Link from "next/link";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
-
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,13 +22,13 @@ const Navbar = () => {
           {/* <span className="font-bold text-lg text-gray-800">YourCompany</span> */}
           <Link href="/">
             <Image
-                src="/leepi_hindi_logo_trimmed.jpg"
-                alt="leepi Logo"
-                width = {130}
-                height = {0}
-                className="cursor-pointer"
+              src="/leepi_hindi_logo_trimmed.jpg"
+              alt="leepi Logo"
+              width={130}
+              height={0}
+              className="cursor-pointer"
             />
-         </Link>
+          </Link>
         </div>
 
         {/* Menu items */}
@@ -51,10 +50,18 @@ const Navbar = () => {
       {/* Mobile menu */}
       {isOpen && (
         <div className="md:hidden mt-2 space-y-2 text-gray-700 font-medium px-2 flex flex-col">
-          <Link href="/" onClick={() => setIsOpen(false)}>Home</Link>
-          <Link href="/about" onClick={() => setIsOpen(false)}>About</Link>
-          <Link href="/services" onClick={() => setIsOpen(false)}>Services</Link>
-          <Link href="/contact" onClick={() => setIsOpen(false)}>Contact</Link>
+          <Link href="/" onClick={() => setIsOpen(false)}>
+            Home
+          </Link>
+          <Link href="/about" onClick={() => setIsOpen(false)}>
+            About
+          </Link>
+          <Link href="/services" onClick={() => setIsOpen(false)}>
+            Services
+          </Link>
+          <Link href="/contact" onClick={() => setIsOpen(false)}>
+            Contact
+          </Link>
         </div>
       )}
     </nav>

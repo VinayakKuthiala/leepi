@@ -38,7 +38,7 @@ export default function CategoryPage() {
 
     // Find the category with the matching name (case-insensitive)
     const foundCategory = categoryData.categories.find(
-      (cat) => cat.category_name.toLowerCase() === slug.toLowerCase()
+      (cat) => cat.category_name.toLowerCase() === slug.toLowerCase(),
     );
 
     setCategory(foundCategory || null);
