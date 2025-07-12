@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Menu, X, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import CategoriesData from "./categories.json";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const Navbar_Products = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,15 +25,20 @@ const Navbar_Products = () => {
   >(null);
 
   return (
-    <nav className="bg-white shadow-md px-6 py-3 relative z-40">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
+    <nav className="bg-white dark:bg-gray-800 shadow-md px-6 py-3 relative z-40 transition-colors duration-200">
+      <div className="w-full mx-auto flex items-center justify-between">
+        {/* Theme indicator - for debugging */}
+        {/* <div className="hidden sm:flex absolute top-0 right-0 bg-green-500 dark:bg-purple-500 text-white text-xs px-2 py-1 rounded-bl">
+          Theme Mode: <span className="dark:hidden">LIGHT</span><span className="hidden dark:inline">DARK</span>
+        </div> */}
+        
         {/* Logo */}
         <div className="flex items-center">
           <div className="w-8 h-8 mr-2 flex space-x-1">
             <div className="w-2 h-2 bg-cyan-500 rounded-full"></div>
             <div className="w-2 h-2 bg-pink-500 rounded-full"></div>
             <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
-            <div className="w-2 h-2 bg-black rounded-full"></div>
+            <div className="w-2 h-2 dark:bg-white bg-black rounded-full"></div>
           </div>
           {/* <span className="font-bold text-lg text-gray-800">YourCompany</span> */}
           <Link href="/">
@@ -47,37 +53,44 @@ const Navbar_Products = () => {
         </div>
 
         {/* Menu items */}
-        <div className="hidden md:flex space-x-6 text-gray-700 font-medium font-sans">
-          <Link href="/">Home</Link>
-          <Link href="/about">About</Link>
-          <Link href="/services">Services</Link>
-          <Link href="/contact">Contact</Link>
+        <div className="hidden md:flex space-x-6 text-gray-700 dark:text-gray-200 font-medium font-sans">
+          <Link href="/" className="hover:text-gray-900 dark:hover:text-white">Home</Link>
+          <Link href="/about" className="hover:text-gray-900 dark:hover:text-white">About</Link>
+          <Link href="/services" className="hover:text-gray-900 dark:hover:text-white">Services</Link>
+          <Link href="/contact" className="hover:text-gray-900 dark:hover:text-white">Contact</Link>
         </div>
 
-        {/* Mobile menu toggle */}
-        <div className="md:hidden">
-          <button onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+        {/* Theme toggle and mobile menu */}
+        <div className="flex items-center gap-4 md:hidden">
+          {/* <ThemeToggle /> */}
+          <div className="md:hidden">
+            <button onClick={() => setIsOpen(!isOpen)} className="text-gray-700 dark:text-gray-200">
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </div>
 
       {/* Mobile menu */}
       {isOpen && (
         <div className="fixed inset-0 z-50 bg-black bg-opacity-40 md:hidden">
-          <div className="fixed top-0 left-0 h-full w-4/5 max-w-xs bg-white shadow-lg p-4 overflow-y-auto transition-transform duration-300">
+          <div className="fixed top-0 left-0 h-full w-4/5 max-w-xs bg-white dark:bg-gray-800 shadow-lg p-4 overflow-y-auto transition-transform duration-300">
             <button
-              className="mb-4 text-gray-700 hover:text-black"
+              className="mb-4 text-gray-700 dark:text-gray-200 hover:text-black dark:hover:text-white"
               onClick={() => setIsOpen(false)}
               aria-label="Close menu"
             >
               <X size={28} />
             </button>
+            {/* <div className="flex items-center gap-2 mb-6">
+              <ThemeToggle />
+              <span className="text-sm text-gray-600 dark:text-gray-300">Toggle Theme</span>
+            </div> */}
             <nav className="flex flex-col gap-2">
               {CategoriesData?.categories?.map((category) => (
                 <div key={category.category_name}>
                   <button
-                    className="w-full flex items-center justify-between py-2 px-2 text-left text-base font-medium text-gray-800 hover:bg-gray-100 rounded"
+                    className="w-full flex items-center justify-between py-2 px-2 text-left text-base font-medium text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded"
                     onClick={() =>
                       setMobileCategoryOpen(
                         mobileCategoryOpen === category?.category_name
@@ -97,11 +110,11 @@ const Navbar_Products = () => {
                     />
                   </button>
                   {mobileCategoryOpen === category?.category_name && (
-                    <div className="pl-4 border-l border-gray-200">
+                    <div className="pl-4 border-l border-gray-200 dark:border-gray-700">
                       {category?.subcategories?.map((subcategory) => (
                         <div key={subcategory?.subcategory_name}>
                           <button
-                            className="w-full flex items-center justify-between py-2 px-2 text-left text-sm text-gray-700 hover:bg-gray-50 rounded"
+                            className="w-full flex items-center justify-between py-2 px-2 text-left text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 rounded"
                             onClick={() =>
                               setMobileSubcategoryOpen(
                                 mobileSubcategoryOpen ===
@@ -124,13 +137,13 @@ const Navbar_Products = () => {
                           </button>
                           {mobileSubcategoryOpen ===
                             `${category?.category_name}__${subcategory?.subcategory_name}` && (
-                            <div className="pl-4 border-l border-gray-100">
+                            <div className="pl-4 border-l border-gray-100 dark:border-gray-700">
                               {subcategory?.subcategory_products?.map(
                                 (product) => (
                                   <Link
                                     key={product?.product_name}
                                     href={product?.product_link}
-                                    className="block py-2 px-2 text-xs text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded"
+                                    className="block py-2 px-2 text-xs text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded"
                                     onClick={() => setIsOpen(false)}
                                   >
                                     {product?.product_name}
@@ -151,8 +164,8 @@ const Navbar_Products = () => {
       )}
       {/* Categories Dropdown */}
       {!isOpen && (
-        <div className="mt-4 relative">
-          <div className="flex justify-center items-center">
+        <div className="mt-4 relative w-full">
+          <div className="flex justify-center items-center min-w-full">
             {CategoriesData?.categories?.map((category) => (
               <div
                 key={category?.category_name}
@@ -164,7 +177,7 @@ const Navbar_Products = () => {
                 }}
               >
                 {/* Category Button */}
-                <button className="flex items-center gap-1 px-6 py-3 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-200">
+                <button className="flex items-center gap-1 px-6 py-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-colors duration-200">
                   {category?.category_name}
                   <ChevronDown
                     size={16}
@@ -174,8 +187,8 @@ const Navbar_Products = () => {
 
                 {/* Full Width Subcategories Dropdown */}
                 {hoveredCategory === category?.category_name && (
-                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-screen bg-white border-t border-gray-200 shadow-lg z-50 py-8 overflow-visible">
-                    <div className="max-w-7xl mx-auto px-6 overflow-visible">
+                  <div className="fixed top-[84px] left-0 w-screen bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 shadow-lg z-50 py-8 overflow-visible transition-colors duration-200">
+                    <div className="w-full mx-auto px-6 overflow-visible">
                       <div className="flex justify-between items-start gap-8 overflow-visible z-50 relative">
                         {category?.subcategories?.map((subcategory) => (
                           <div
@@ -190,9 +203,9 @@ const Navbar_Products = () => {
                           >
                             <Link
                               href={subcategory?.subcategory_link}
-                              className="block group hover:bg-gray-50 rounded-lg p-4 transition-colors duration-200"
+                              className="block group hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg p-4 transition-colors duration-200"
                             >
-                              <div className="w-16 h-16 mx-auto mb-3 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden shadow-sm">
+                              <div className="w-16 h-16 mx-auto mb-3 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center overflow-hidden shadow-sm">
                                 <Image
                                   src={subcategory?.subcategory_image}
                                   alt={subcategory?.subcategory_name}
@@ -201,10 +214,10 @@ const Navbar_Products = () => {
                                   className="object-cover"
                                 />
                               </div>
-                              <h4 className="text-sm font-medium text-gray-900 mb-1">
+                              <h4 className="text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">
                                 {subcategory?.subcategory_name}
                               </h4>
-                              <p className="text-xs text-gray-500">
+                              <p className="text-xs text-gray-500 dark:text-gray-400">
                                 {subcategory?.subcategory_products?.length}{" "}
                                 product
                                 {subcategory?.subcategory_products?.length !== 1
@@ -217,10 +230,10 @@ const Navbar_Products = () => {
                             {hoveredSubcategory ===
                               subcategory?.subcategory_name &&
                               subcategory?.subcategory_products?.length > 0 && (
-                                <div className="absolute left-1/2 -translate-x-1/2 top-full z-[999] mt-0 bg-white rounded-lg p-4 border border-gray-200 shadow-2xl min-w-[220px] max-w-xs overflow-visible flex flex-col items-start group/dropdown pointer-events-auto">
+                                <div className="absolute left-1/2 -translate-x-1/2 top-full z-[999] mt-0 bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700 shadow-2xl min-w-[220px] max-w-xs overflow-visible flex flex-col items-start group/dropdown pointer-events-auto transition-colors duration-200">
                                   {/* Arrow/connector */}
-                                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white border-l border-t border-gray-200 rotate-45 z-0 shadow-md pointer-events-none"></div>
-                                  <h5 className="text-xs font-semibold text-gray-600 uppercase tracking-wide mb-3">
+                                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white dark:bg-gray-800 border-l border-t border-gray-200 dark:border-gray-700 rotate-45 z-0 shadow-md pointer-events-none transition-colors duration-200"></div>
+                                  <h5 className="text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wide mb-3">
                                     Products
                                   </h5>
                                   <div className="space-y-2 w-full">
@@ -230,9 +243,9 @@ const Navbar_Products = () => {
                                           key={product?.product_name}
                                           href={product?.product_link}
                                           style={{ color: "black" }}
-                                          className="flex items-center gap-2 text-sm text-black hover:text-blue-600 transition-colors duration-200 px-2 py-1 rounded hover:bg-gray-50 w-full"
+                                          className="flex items-center gap-2 text-sm text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 px-2 py-1 rounded hover:bg-gray-50 dark:hover:bg-gray-700 w-full"
                                         >
-                                          <div className="w-6 h-6 bg-gray-200 rounded flex items-center justify-center overflow-hidden">
+                                          <div className="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded flex items-center justify-center overflow-hidden">
                                             <Image
                                               src={product?.product_image}
                                               alt={product?.product_name}
@@ -241,7 +254,7 @@ const Navbar_Products = () => {
                                               className="object-cover"
                                             />
                                           </div>
-                                          <span className="text-gray-900 truncate">
+                                          <span className="text-gray-900 dark:text-gray-100 truncate">
                                             {product?.product_name}
                                           </span>
                                         </Link>
