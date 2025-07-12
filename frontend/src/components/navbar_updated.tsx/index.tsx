@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Menu, X, ChevronDown } from "lucide-react";
 import Image from "next/image";
@@ -14,6 +14,15 @@ const Navbar_Products = () => {
     null
   );
 
+    const navRef = useRef(null);
+  const [navHeight, setNavHeight] = useState(0);
+
+  useEffect(() => {
+    if (navRef.current) {
+      setNavHeight(navRef.current.offsetHeight);
+    }
+  }, []);
+
   console.log("hoveredSubcategory", hoveredSubcategory);
 
   // Mobile accordion state
@@ -25,7 +34,7 @@ const Navbar_Products = () => {
   >(null);
 
   return (
-    <nav className="bg-white dark:bg-gray-800 shadow-md px-6 py-3 relative z-40 transition-colors duration-200">
+    <nav ref={navRef} className="bg-white dark:bg-gray-800 shadow-md px-6 py-3 relative z-40 transition-colors duration-200">
       <div className="w-full mx-auto flex items-center justify-between">
         {/* Theme indicator - for debugging */}
         {/* <div className="hidden sm:flex absolute top-0 right-0 bg-green-500 dark:bg-purple-500 text-white text-xs px-2 py-1 rounded-bl">
@@ -187,7 +196,7 @@ const Navbar_Products = () => {
 
                 {/* Full Width Subcategories Dropdown */}
                 {hoveredCategory === category?.category_name && (
-                  <div className="fixed top-[84px] left-0 w-screen bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 shadow-lg z-50 py-8 overflow-visible transition-colors duration-200">
+                  <div style={{top:navHeight-12}} className="fixed  left-0 w-screen bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 shadow-lg z-50 py-8 overflow-visible transition-all duration-500 ease-in-out animate-fade-slide">
                     <div className="w-full mx-auto px-6 overflow-visible">
                       <div className="flex justify-between items-start gap-8 overflow-visible z-50 relative">
                         {category?.subcategories?.map((subcategory) => (
@@ -230,7 +239,7 @@ const Navbar_Products = () => {
                             {hoveredSubcategory ===
                               subcategory?.subcategory_name &&
                               subcategory?.subcategory_products?.length > 0 && (
-                                <div className="absolute left-1/2 -translate-x-1/2 top-full z-[999] mt-0 bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700 shadow-2xl min-w-[220px] max-w-xs overflow-visible flex flex-col items-start group/dropdown pointer-events-auto transition-colors duration-200">
+                                <div className="absolute left-1/2 -translate-x-1/2 top-full z-[999] mt-0 bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700 shadow-2xl min-w-[220px] max-w-xs overflow-visible flex flex-col items-start group/dropdown pointer-events-auto transition-all duration-500 ease-in-out animate-fade-slide">
                                   {/* Arrow/connector */}
                                   <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white dark:bg-gray-800 border-l border-t border-gray-200 dark:border-gray-700 rotate-45 z-0 shadow-md pointer-events-none transition-colors duration-200"></div>
                                   <h5 className="text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wide mb-3">

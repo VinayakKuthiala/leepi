@@ -8,7 +8,7 @@ import WhatYouGetSection from "@/components/WhatYouGetSection";
 
 export default function Home() {
   return (
-    <div className="p-8">
+    <div className="">
       <AnimatedWriting
         imageSrc="/leepi_english_logo.jpg"
         text="Welcome to our creative studio – where design meets emotion"
