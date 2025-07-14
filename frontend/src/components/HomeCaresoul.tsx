@@ -59,7 +59,7 @@ export default function Component() {
 
     setTimeout(() => {
       setCurrentSlide(
-        (prev) => (prev - 1 + carouselImages.length) % carouselImages.length
+        (prev) => (prev - 1 + carouselImages.length) % carouselImages.length,
       );
       setIsTransitioning(false);
     }, 700);

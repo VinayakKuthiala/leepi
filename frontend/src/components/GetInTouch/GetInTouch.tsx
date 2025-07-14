@@ -2,51 +2,66 @@
 
 import { useState } from "react";
 import { X, MessageCircle, Phone } from "lucide-react";
-import serviceTypesData from "./serviceTypes.json";
+import { useForm, Controller } from "react-hook-form";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+type FormData = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  company?: string;
+  message: string;
+  service: string;
+};
 
 const GetInTouch = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [selectedServiceType, setSelectedServiceType] = useState("");
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    serviceType: "",
-    message: "",
-  });
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleInputChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >,
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-
-    // Handle service type selection to show images
-    if (name === "serviceType") {
-      setSelectedServiceType(value);
-    }
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
-    closeModal();
-    // Reset form
-    setFormData({
-      name: "",
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { errors, isValid },
+  } = useForm<FormData>({
+    mode: "onChange",
+    defaultValues: {
+      firstName: "",
+      lastName: "",
       email: "",
       phone: "",
-      serviceType: "",
+      company: "",
       message: "",
-    });
-    setSelectedServiceType("");
+      service: "",
+    },
+  });
+
+  const services = [
+    "Business Cards & Stationery",
+    "Brochures & Catalogs",
+    "Posters & Banners",
+    "Signage & Displays",
+    "Corporate Gifts",
+    "Packaging Solutions",
+    "Other Services",
+  ];
+
+  const onSubmit = async (data: FormData) => {
+    setSubmitting(true);
+    try {
+      // Simulate API call
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      toast.success("Message sent successfully! We'll be in touch soon.");
+      reset();
+      closeModal();
+    } catch (error) {
+      toast.error("Something went wrong. Please try again later.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const openModal = () => {
@@ -61,10 +76,10 @@ const GetInTouch = () => {
 
   const closeModal = () => {
     setIsAnimating(false);
-    setSelectedServiceType("");
     // Wait for animation to complete before hiding modal
     setTimeout(() => {
       setIsModalOpen(false);
+      reset(); // Reset form when closing
       // Restore body scroll
       document.body.style.overflow = "unset";
     }, 500); // Match the animation duration
@@ -101,7 +116,7 @@ const GetInTouch = () => {
         >
           {/* Modal Content */}
           <div
-            className={`bg-white rounded-lg shadow-2xl w-full max-w-md my-8 transform transition-all duration-500 ease-out max-h-[90vh] overflow-y-auto ${
+            className={`bg-white rounded-2xl shadow-2xl w-full max-w-2xl my-8 transform transition-all duration-500 ease-out max-h-[90vh] overflow-y-auto ${
               isAnimating
                 ? "translate-y-0 opacity-100 scale-100"
                 : "-translate-y-full opacity-0 scale-95"
@@ -109,136 +124,308 @@ const GetInTouch = () => {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-6 border-b border-gray-200">
+            <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gradient-to-r from-purple-50 to-pink-50">
               <div className="flex items-center space-x-2">
-                <Phone className="text-blue-600" size={20} />
-                <h2 className="text-xl font-semibold text-gray-800">
-                  REQUEST A CALL
+                <MessageCircle className="text-purple-600" size={24} />
+                <h2 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                  Get In Touch
                 </h2>
               </div>
               <button
                 onClick={closeModal}
-                className="text-gray-400 hover:text-gray-600 transition-colors duration-200 p-1 hover:bg-gray-100 rounded-full"
+                className="text-gray-400 hover:text-gray-600 transition-colors duration-200 p-2 hover:bg-gray-100 rounded-full"
               >
-                <X size={20} />
+                <X size={24} />
               </button>
             </div>
 
             {/* Modal Body */}
-            <form onSubmit={handleSubmit} className="p-6 space-y-4">
-              {/* Name Field */}
-              <div>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="NAME"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 placeholder-gray-500 text-sm"
-                />
-              </div>
-
-              {/* Email Field */}
-              <div>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="EMAIL ID"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 placeholder-gray-500 text-sm"
-                />
-              </div>
-
-              {/* Phone Field */}
-              <div>
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="PHONE NUMBER"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 placeholder-gray-500 text-sm"
-                />
-              </div>
-
-              {/* Service Type Dropdown */}
-              <div>
-                <select
-                  name="serviceType"
-                  value={formData.serviceType}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 text-gray-500 text-sm"
-                >
-                  <option value="">SERVICE TYPE</option>
-                  {serviceTypesData.serviceTypes.map((service) => (
-                    <option key={service.id} value={service.id}>
-                      {service.title}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              {/* Service Images */}
-              {selectedServiceType && (
-                <div className="space-y-3">
-                  <h3 className="text-sm font-medium text-gray-700 uppercase tracking-wide">
-                    {
-                      serviceTypesData.serviceTypes.find(
-                        (s) => s.id === selectedServiceType,
-                      )?.title
-                    }
-                  </h3>
-                  <div className="grid grid-cols-4 gap-2">
-                    {serviceTypesData.serviceTypes
-                      .find((s) => s.id === selectedServiceType)
-                      ?.images.map((image) => (
-                        <div key={image.id} className="text-center">
-                          <div className="aspect-square rounded-lg overflow-hidden border border-gray-200 mb-1">
-                            <img
-                              src={image.url}
-                              alt={image.title}
-                              className="w-full h-full object-cover hover:scale-105 transition-transform duration-200"
-                            />
-                          </div>
-                          <p className="text-xs text-gray-600 font-medium">
-                            {image.title}
+            <form onSubmit={handleSubmit(onSubmit)} className="p-8 space-y-6">
+              {/* Name Fields - Two Columns */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <Controller
+                    name="firstName"
+                    control={control}
+                    rules={{ required: "First name is required" }}
+                    render={({ field }) => (
+                      <div>
+                        <label className="block text-gray-700 text-sm font-medium mb-2">
+                          First Name <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                          {...field}
+                          type="text"
+                          className={`w-full px-4 py-3 rounded-lg border ${
+                            errors.firstName
+                              ? "border-red-300 bg-red-50"
+                              : "border-gray-300"
+                          } focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent transition-colors duration-200`}
+                          placeholder="Enter your first name"
+                        />
+                        {errors.firstName && (
+                          <p className="mt-1 text-sm text-red-600">
+                            {errors.firstName.message}
                           </p>
-                        </div>
-                      ))}
-                  </div>
+                        )}
+                      </div>
+                    )}
+                  />
                 </div>
-              )}
 
-              {/* Message Field */}
+                <div>
+                  <Controller
+                    name="lastName"
+                    control={control}
+                    rules={{ required: "Last name is required" }}
+                    render={({ field }) => (
+                      <div>
+                        <label className="block text-gray-700 text-sm font-medium mb-2">
+                          Last Name <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                          {...field}
+                          type="text"
+                          className={`w-full px-4 py-3 rounded-lg border ${
+                            errors.lastName
+                              ? "border-red-300 bg-red-50"
+                              : "border-gray-300"
+                          } focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent transition-colors duration-200`}
+                          placeholder="Enter your last name"
+                        />
+                        {errors.lastName && (
+                          <p className="mt-1 text-sm text-red-600">
+                            {errors.lastName.message}
+                          </p>
+                        )}
+                      </div>
+                    )}
+                  />
+                </div>
+              </div>
+
+              {/* Email and Phone - Two Columns */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <Controller
+                    name="email"
+                    control={control}
+                    rules={{
+                      required: "Email is required",
+                      pattern: {
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                        message: "Invalid email address",
+                      },
+                    }}
+                    render={({ field }) => (
+                      <div>
+                        <label className="block text-gray-700 text-sm font-medium mb-2">
+                          Email <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                          {...field}
+                          type="email"
+                          className={`w-full px-4 py-3 rounded-lg border ${
+                            errors.email
+                              ? "border-red-300 bg-red-50"
+                              : "border-gray-300"
+                          } focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent transition-colors duration-200`}
+                          placeholder="your.email@example.com"
+                        />
+                        {errors.email && (
+                          <p className="mt-1 text-sm text-red-600">
+                            {errors.email.message}
+                          </p>
+                        )}
+                      </div>
+                    )}
+                  />
+                </div>
+
+                <div>
+                  <Controller
+                    name="phone"
+                    control={control}
+                    rules={{
+                      required: "Phone number is required",
+                      pattern: {
+                        value: /^[0-9\+\-\(\) ]+$/,
+                        message: "Invalid phone number",
+                      },
+                    }}
+                    render={({ field }) => (
+                      <div>
+                        <label className="block text-gray-700 text-sm font-medium mb-2">
+                          Phone <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                          {...field}
+                          type="tel"
+                          className={`w-full px-4 py-3 rounded-lg border ${
+                            errors.phone
+                              ? "border-red-300 bg-red-50"
+                              : "border-gray-300"
+                          } focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent transition-colors duration-200`}
+                          placeholder="+1 (555) 123-4567"
+                        />
+                        {errors.phone && (
+                          <p className="mt-1 text-sm text-red-600">
+                            {errors.phone.message}
+                          </p>
+                        )}
+                      </div>
+                    )}
+                  />
+                </div>
+              </div>
+
+              {/* Company */}
               <div>
-                <textarea
+                <Controller
+                  name="company"
+                  control={control}
+                  render={({ field }) => (
+                    <div>
+                      <label className="block text-gray-700 text-sm font-medium mb-2">
+                        Company Name (Optional)
+                      </label>
+                      <input
+                        {...field}
+                        type="text"
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent transition-colors duration-200"
+                        placeholder="Your company name"
+                      />
+                    </div>
+                  )}
+                />
+              </div>
+
+              {/* Service Selector */}
+              <div>
+                <Controller
+                  name="service"
+                  control={control}
+                  rules={{ required: "Please select a service" }}
+                  render={({ field }) => (
+                    <div>
+                      <label className="block text-gray-700 text-sm font-medium mb-2">
+                        Service You're Interested In{" "}
+                        <span className="text-red-500">*</span>
+                      </label>
+                      <select
+                        {...field}
+                        className={`w-full px-4 py-3 rounded-lg border ${
+                          errors.service
+                            ? "border-red-300 bg-red-50"
+                            : "border-gray-300"
+                        } focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent bg-white transition-colors duration-200`}
+                      >
+                        <option value="">Select a Service</option>
+                        {services.map((service) => (
+                          <option key={service} value={service}>
+                            {service}
+                          </option>
+                        ))}
+                      </select>
+                      {errors.service && (
+                        <p className="mt-1 text-sm text-red-600">
+                          {errors.service.message}
+                        </p>
+                      )}
+                    </div>
+                  )}
+                />
+              </div>
+
+              {/* Message */}
+              <div>
+                <Controller
                   name="message"
-                  placeholder="MESSAGE"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  rows={4}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 placeholder-gray-500 text-sm resize-none"
+                  control={control}
+                  rules={{ required: "Please enter your message" }}
+                  render={({ field }) => (
+                    <div>
+                      <label className="block text-gray-700 text-sm font-medium mb-2">
+                        Your Message <span className="text-red-500">*</span>
+                      </label>
+                      <textarea
+                        {...field}
+                        rows={4}
+                        className={`w-full px-4 py-3 rounded-lg border ${
+                          errors.message
+                            ? "border-red-300 bg-red-50"
+                            : "border-gray-300"
+                        } focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent transition-colors duration-200 resize-none`}
+                        placeholder="Tell us about your project requirements..."
+                      ></textarea>
+                      {errors.message && (
+                        <p className="mt-1 text-sm text-red-600">
+                          {errors.message.message}
+                        </p>
+                      )}
+                    </div>
+                  )}
                 />
               </div>
 
               {/* Submit Button */}
-              <div className="pt-2">
+              <div className="pt-4">
                 <button
                   type="submit"
-                  className="w-full bg-gray-800 hover:bg-gray-900 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 text-sm uppercase tracking-wide"
+                  disabled={submitting || !isValid}
+                  className={`w-full py-4 px-6 rounded-lg text-white font-medium transition-all duration-300 text-lg
+                    ${
+                      submitting || !isValid
+                        ? "bg-gray-400 cursor-not-allowed"
+                        : "bg-gradient-to-r from-purple-600 to-pink-500 hover:shadow-lg hover:shadow-purple-300 transform hover:-translate-y-1"
+                    }`}
                 >
-                  SEND ENQUIRY
+                  {submitting ? (
+                    <div className="flex items-center justify-center">
+                      <svg
+                        className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        ></circle>
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                        ></path>
+                      </svg>
+                      Sending Message...
+                    </div>
+                  ) : (
+                    "Send Message"
+                  )}
                 </button>
               </div>
             </form>
           </div>
         </div>
       )}
+
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
 
       {/* CSS Animations */}
       <style jsx>{`
