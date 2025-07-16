@@ -93,7 +93,7 @@ export default function ContactPage() {
           <h1 className="text-4xl md:text-6xl font-bold text-center tracking-tight">
             Get In Touch
           </h1>
-          <p className="text-white/80 text-center mt-4 max-w-2xl mx-auto text-lg">
+          <p className="text-white/80 text-center mt-4 max-w-2xl mx-auto text-lg lg:text-xl">
             Have questions or ready to start your next project? We're here to
             help you create something amazing.
           </p>

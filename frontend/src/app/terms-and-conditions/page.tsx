@@ -1,18 +1,22 @@
 import React from "react";
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 export default function TermsAndConditions() {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-4xl mx-auto px-4 py-12">
-        {/* Breadcrumb */}
-        <nav className="mb-8">
-          <Link  prefetch={true} href="/" className="text-blue-600 hover:text-blue-800">
-            Home
-          </Link>
-          <span className="mx-2 text-gray-400">/</span>
-          <span className="text-gray-600">Terms & Conditions</span>
-        </nav>
+        {/* Breadcrumbs */}
+        <div className="relative backdrop-blur-sm bg-white/80 shadow-sm z-10">
+          <div className="container mx-auto py-4 px-4 md:px-8">
+            <Breadcrumbs
+              items={[
+                { label: "Home", href: "/" },
+                { label: "Contact Us", href: "#" },
+              ]}
+            />
+          </div>
+        </div>
 
         {/* Header */}
         <div className="mb-8">

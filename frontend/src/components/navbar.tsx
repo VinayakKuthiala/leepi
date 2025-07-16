@@ -20,7 +20,7 @@ const Navbar = () => {
             <div className="w-2 h-2 bg-black rounded-full"></div>
           </div>
           {/* <span className="font-bold text-lg text-gray-800">YourCompany</span> */}
-          <Link  prefetch={true}  href="/">
+          <Link prefetch={true} href="/">
             <Image
               src="/leepi_hindi_logo_trimmed.jpg"
               alt="leepi Logo"
@@ -33,10 +33,18 @@ const Navbar = () => {
 
         {/* Menu items */}
         <div className="hidden md:flex space-x-6 text-gray-700 font-medium font-sans">
-          <Link  prefetch={true} href="/">Home</Link>
-          <Link  prefetch={true} href="/about">About</Link>
-          <Link  prefetch={true} href="/services">Services</Link>
-          <Link  prefetch={true} href="/contact">Contact</Link>
+          <Link prefetch={true} href="/">
+            Home
+          </Link>
+          <Link prefetch={true} href="/about">
+            About
+          </Link>
+          <Link prefetch={true} href="/services">
+            Services
+          </Link>
+          <Link prefetch={true} href="/contact">
+            Contact
+          </Link>
         </div>
 
         {/* Mobile menu toggle */}
@@ -50,16 +58,24 @@ const Navbar = () => {
       {/* Mobile menu */}
       {isOpen && (
         <div className="md:hidden mt-2 space-y-2 text-gray-700 font-medium px-2 flex flex-col">
-          <Link  prefetch={true} href="/" onClick={() => setIsOpen(false)}>
+          <Link prefetch={true} href="/" onClick={() => setIsOpen(false)}>
             Home
           </Link>
-          <Link  prefetch={true} href="/about" onClick={() => setIsOpen(false)}>
+          <Link prefetch={true} href="/about" onClick={() => setIsOpen(false)}>
             About
           </Link>
-          <Link  prefetch={true} href="/services" onClick={() => setIsOpen(false)}>
+          <Link
+            prefetch={true}
+            href="/services"
+            onClick={() => setIsOpen(false)}
+          >
             Services
           </Link>
-          <Link  prefetch={true} href="/contact" onClick={() => setIsOpen(false)}>
+          <Link
+            prefetch={true}
+            href="/contact"
+            onClick={() => setIsOpen(false)}
+          >
             Contact
           </Link>
         </div>

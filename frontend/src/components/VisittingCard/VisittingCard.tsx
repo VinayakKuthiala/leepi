@@ -16,12 +16,36 @@ const materialOptions = [
 
 const VisittingCard = () => {
   const router = useRouter();
-  const { handleSubmit, control, setValue } = useForm({ mode: "onChange" });
-  const { errors, isValid } = useFormState({ control });
+  const {
+    handleSubmit,
+    control,
+    setValue,
+    formState: { errors, isValid },
+    watch,
+  } = useForm({
+    mode: "onChange",
+    defaultValues: {
+      material: "",
+      matter: "",
+      file: "",
+    },
+  });
+  // const { errors, isValid } = useFormState({ control });
 
   const onSubmit = async (data) => {
     toast.success("Submitted! (Demo only)");
   };
+
+  // Watch form values using simple watch
+  const matter = watch("matter");
+
+  const file = watch("file");
+
+  // Simple logic: disable if either matter OR file is missing
+  // Simple logic: disable if either matter OR file is missing
+  const isFormValid = (matter && matter.trim().length >= 5) || file;
+
+  console.log("Form Validity:", isFormValid);
 
   const handleRedirect = () => {
     router.push("/signup");
@@ -66,11 +90,11 @@ const VisittingCard = () => {
             name="material"
             control={control}
             defaultValue=""
-            rules={{ required: "Please select a material" }}
+            // rules={{ required: "Please select a material" }}
             render={({ field }) => (
               <div className="flex flex-col gap-2 w-full max-w-2x">
                 <label className="font-medium text-gray-700 dark:text-gray-200">
-                  Material <span className="text-red-500">*</span>
+                  Material
                 </label>
                 <select
                   {...field}
@@ -179,11 +203,11 @@ const VisittingCard = () => {
               type="button"
               onClick={handleRedirect}
               className={`flex-1 font-semibold py-2 rounded-lg shadow transition-colors duration-200  ${
-                isValid
+                isFormValid
                   ? "bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800 text-white cursor-pointer"
                   : "bg-gray-300 dark:bg-gray-600 text-gray-500 dark:text-gray-400 cursor-not-allowed "
               }`}
-              disabled={!isValid}
+              disabled={!isFormValid}
             >
               Add to Cart
             </button>
@@ -191,11 +215,11 @@ const VisittingCard = () => {
               type="button"
               onClick={handleRedirect}
               className={`flex-1 font-semibold py-2 rounded-lg shadow transition-colors duration-200  ${
-                isValid
+                isFormValid
                   ? "bg-black hover:bg-gray-900 dark:bg-gray-800 dark:hover:bg-gray-900 text-white cursor-pointer"
                   : "bg-gray-300 dark:bg-gray-600 text-gray-500 dark:text-gray-400 cursor-not-allowed"
               }`}
-              disabled={!isValid}
+              disabled={!isFormValid}
             >
               Buy Now
             </button>

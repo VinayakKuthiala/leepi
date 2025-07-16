@@ -39,13 +39,13 @@ const benefitsData = [
 ];
 
 const WhatYouGetSection = () => (
-  <div className="mt-8 md:mt-12 lg:mt-16 flex flex-col items-center justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 bg-gradient-to-br from-blue-100/80 via-white to-blue-50 rounded-xl sm:rounded-2xl  md:rounded-3xl shadow-2xl p-4 sm:p-6 md:p-8  lg:p-10 max-w-3xl mx-auto border border-blue-200 relative overflow-hidden">
+  <div className=" md:w-[90vw] mt-8 md:mt-12 lg:mt-16 flex flex-col items-center justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 bg-gradient-to-br from-blue-100/80 via-white to-blue-50 rounded-xl sm:rounded-2xl  md:rounded-3xl shadow-2xl p-4 sm:p-6 md:p-8  lg:p-10 mx-auto border border-blue-200 relative overflow-hidden">
     <div className="absolute -top-10 -left-10 w-40 h-40 bg-blue-200/30 dark:bg-blue-700/20 rounded-full blur-2xl z-0" />
     <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-blue-400/20 dark:bg-blue-500/20 rounded-full blur-2xl z-0" />
-    <h3 className="text-3xl font-extrabold text-blue-900 dark:text-white mb-2 z-10 drop-shadow">
+    <h3 className="text-3xl lg:text-4xl font-extrabold text-blue-900 dark:text-white mb-2 z-10 drop-shadow">
       Unlock Premium Benefits
     </h3>
-    <p className=" text-base md:text-lg text-blue-700 dark:text-blue-400 mb-4 z-10">
+    <p className=" text-base md:text-lg lg:text-xl text-blue-700 dark:text-blue-400 mb-4 z-10">
       Sign up and elevate your creative journey with us!
     </p>
     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full z-10">
@@ -57,7 +57,7 @@ const WhatYouGetSection = () => (
           }`}
         >
           <span className={listItemIconClass}>{benefit.icon}</span>
-          <span className="font-medium text-blue-900 dark:text-white">
+          <span className="font-medium lg:text-lg text-blue-900 dark:text-white">
             {benefit.text}
           </span>
         </li>

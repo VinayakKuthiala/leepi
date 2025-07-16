@@ -27,8 +27,11 @@ const SignUp = () => {
     "w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:outline-none placeholder:text-gray-300 text-black";
   return (
     <div className="flex flex-col gap-6 bg-white border border-gray-200 p-8 rounded-xl shadow-lg max-w-lg mx-auto my-8">
-      <h2 className="text-2xl font-bold text-gray-800 mb-2">
+      {/* <h2 className="text-2xl font-bold text-gray-800 mb-2">
         Create your free account
+      </h2> */}
+      <h2 className="whitespace-nowrap text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent mb-2">
+        It's fun getting to know each other -
       </h2>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5 ">
         <Controller
@@ -38,7 +41,7 @@ const SignUp = () => {
           rules={{ required: "Name is required" }}
           render={({ field }) => (
             <div className="flex flex-col gap-1">
-              <label className="font-medium text-black">
+              <label className="font-semibold text-black">
                 Name <span className="text-red-500">*</span>
               </label>
               <input
@@ -68,7 +71,7 @@ const SignUp = () => {
           }}
           render={({ field }) => (
             <div className="flex flex-col gap-1">
-              <label className="font-medium text-black">
+              <label className="font-semibold text-black">
                 Email <span className="text-red-500">*</span>
               </label>
               <input
@@ -98,7 +101,7 @@ const SignUp = () => {
           }}
           render={({ field }) => (
             <div className="flex flex-col gap-1">
-              <label className="font-medium text-black">
+              <label className="font-semibold text-black">
                 Password <span className="text-red-500">*</span>
               </label>
               <input

@@ -96,10 +96,10 @@ const Footer = () => {
       label: "Privacy Policy",
       href: "/privacy-policy",
     },
-    {
-      label: "Sitemap",
-      href: "/sitemap",
-    },
+    // {
+    //   label: "Sitemap",
+    //   href: "/sitemap",
+    // },
   ];
   return (
     <footer className="bg-gray-900 text-white">

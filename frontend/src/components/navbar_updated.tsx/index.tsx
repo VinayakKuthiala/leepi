@@ -11,7 +11,7 @@ const Navbar_Products = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
   const [hoveredSubcategory, setHoveredSubcategory] = useState<string | null>(
-    null
+    null,
   );
 
   const [isMobile, setIsMobile] = useState(false);
@@ -40,7 +40,7 @@ const Navbar_Products = () => {
 
   // Mobile accordion state
   const [mobileCategoryOpen, setMobileCategoryOpen] = useState<string | null>(
-    null
+    null,
   );
   const [mobileSubcategoryOpen, setMobileSubcategoryOpen] = useState<
     string | null
@@ -57,6 +57,20 @@ const Navbar_Products = () => {
       ref={navRef}
       className="bg-white dark:bg-gray-800 shadow-md px-6 py-3 relative z-40 transition-colors duration-200"
     >
+      <div className="flex md:hidden space-x-6 text-gray-700 dark:text-gray-200 font-medium font-sans mt-3 justify-end pb-4">
+        {MenuArr.map((item, idx) => {
+          return (
+            <Link
+              prefetch={true}
+              key={idx}
+              className="hover:text-gray-900 dark:hover:text-white"
+              href={item.link}
+            >
+              {item.title}
+            </Link>
+          );
+        })}
+      </div>
       <div className="w-full mx-auto flex items-center justify-between">
         {/* Theme indicator - for debugging */}
         {/* <div className="hidden sm:flex absolute top-0 right-0 bg-green-500 dark:bg-purple-500 text-white text-xs px-2 py-1 rounded-bl">
@@ -137,7 +151,7 @@ const Navbar_Products = () => {
                       setMobileCategoryOpen(
                         mobileCategoryOpen === category?.category_name
                           ? null
-                          : category?.category_name
+                          : category?.category_name,
                       )
                     }
                   >
@@ -162,7 +176,7 @@ const Navbar_Products = () => {
                                 mobileSubcategoryOpen ===
                                   `${category?.category_name}__${subcategory?.subcategory_name}`
                                   ? null
-                                  : `${category?.category_name}__${subcategory?.subcategory_name}`
+                                  : `${category?.category_name}__${subcategory?.subcategory_name}`,
                               )
                             }
                           >
@@ -179,19 +193,31 @@ const Navbar_Products = () => {
                           </button>
                           {mobileSubcategoryOpen ===
                             `${category?.category_name}__${subcategory?.subcategory_name}` && (
-                            <div className="pl-4 border-l border-gray-100 dark:border-gray-700">
+                            <div className="pl-4 border-l border-gray-100 dark:border-gray-700 space-y-2">
                               {subcategory?.subcategory_products?.map(
                                 (product) => (
-                                  <Link
-                                    prefetch={true}
+                                  <div
+                                    className=" flex gap-1"
                                     key={product?.product_name}
-                                    href={product?.product_link}
-                                    className="block py-2 px-2 text-xs text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded"
-                                    onClick={() => setIsOpen(false)}
                                   >
-                                    {product?.product_name}
-                                  </Link>
-                                )
+                                    <Image
+                                      src={product?.product_image}
+                                      alt={product?.product_name}
+                                      width={36}
+                                      height={24}
+                                      className="object-cover flex-shrink-0"
+                                    />
+
+                                    <Link
+                                      prefetch={true}
+                                      href={product?.product_link}
+                                      className="block py-2 px-2 text-xs text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded"
+                                      onClick={() => setIsOpen(false)}
+                                    >
+                                      {product?.product_name}
+                                    </Link>
+                                  </div>
+                                ),
                               )}
                             </div>
                           )}
@@ -243,7 +269,7 @@ const Navbar_Products = () => {
                             className="flex-1 text-center relative overflow-visible"
                             onMouseEnter={() =>
                               setHoveredSubcategory(
-                                subcategory?.subcategory_name
+                                subcategory?.subcategory_name,
                               )
                             }
                             onMouseLeave={() => setHoveredSubcategory(null)}
@@ -267,8 +293,9 @@ const Navbar_Products = () => {
                               </h4>
                               <p className="text-xs text-gray-500 dark:text-gray-400">
                                 {subcategory?.subcategory_products?.length}{" "}
-                                product
-                                {subcategory?.subcategory_products?.length !== 1
+                                {subcategory?.subcategory_products?.length &&
+                                  "Product"}
+                                {subcategory?.subcategory_products?.length > 1
                                   ? "s"
                                   : ""}
                               </p>
@@ -307,7 +334,7 @@ const Navbar_Products = () => {
                                             {product?.product_name}
                                           </span>
                                         </Link>
-                                      )
+                                      ),
                                     )}
                                   </div>
                                 </div>
