@@ -47,13 +47,14 @@ export const Breadcrumbs = ({ items }: BreadcrumbsProps) => {
                   </span>
                 ) : (
                   <Link
+                    prefetch={true}
                     href={item.href}
                     className="text-gray-600 hover:text-purple-600 transition-colors duration-200 flex items-center"
                   >
                     {index === 0 && (
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="h-4 w-4 mr-1"
+                        className="h-4 w-4 mr-1 mb-0.5"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -66,7 +67,7 @@ export const Breadcrumbs = ({ items }: BreadcrumbsProps) => {
                         />
                       </svg>
                     )}
-                    {item.label}
+                    <span>{item.label}</span>
                   </Link>
                 )}
               </li>

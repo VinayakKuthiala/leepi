@@ -38,7 +38,7 @@ export default function CategoryPage() {
 
     // Find the category with the matching name (case-insensitive)
     const foundCategory = categoryData.categories.find(
-      (cat) => cat.category_name.toLowerCase() === slug.toLowerCase(),
+      (cat) => cat.category_name.toLowerCase() === slug.toLowerCase()
     );
 
     setCategory(foundCategory || null);
@@ -96,6 +96,7 @@ export default function CategoryPage() {
             moved or doesn't exist.
           </p>
           <Link
+            prefetch={true}
             href="/"
             className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-500 text-white px-8 py-3 rounded-full font-medium hover:shadow-lg hover:shadow-purple-300 transition-all duration-300 transform hover:scale-105"
           >
@@ -193,6 +194,7 @@ export default function CategoryPage() {
                   crafted with attention to detail and modern design principles.
                 </p>
                 <Link
+                  prefetch={true}
                   href={subcategory.subcategory_link}
                   className="mt-4 inline-flex items-center gap-2 px-6 py-2 bg-gradient-to-r from-purple-600 to-pink-500 text-white rounded-full font-medium hover:shadow-lg hover:shadow-purple-200 transition-all duration-300"
                 >
@@ -221,6 +223,7 @@ export default function CategoryPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 relative">
                 {subcategory.subcategory_products.map((product, idx) => (
                   <Link
+                    prefetch={true}
                     href={product.product_link}
                     key={product.product_name}
                     className="group bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden transform hover:-translate-y-1"
@@ -273,6 +276,7 @@ export default function CategoryPage() {
             quote.
           </p>
           <Link
+            prefetch={true}
             href="/contact"
             className="inline-flex items-center gap-2 bg-white text-purple-600 font-bold px-8 py-3 rounded-full hover:shadow-lg hover:shadow-purple-900/20 transition-all duration-300 transform hover:scale-105"
           >

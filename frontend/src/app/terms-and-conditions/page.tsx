@@ -7,7 +7,7 @@ export default function TermsAndConditions() {
       <div className="max-w-4xl mx-auto px-4 py-12">
         {/* Breadcrumb */}
         <nav className="mb-8">
-          <Link href="/" className="text-blue-600 hover:text-blue-800">
+          <Link  prefetch={true} href="/" className="text-blue-600 hover:text-blue-800">
             Home
           </Link>
           <span className="mx-2 text-gray-400">/</span>

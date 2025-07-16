@@ -11,7 +11,7 @@ const Navbar_Products = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
   const [hoveredSubcategory, setHoveredSubcategory] = useState<string | null>(
-    null,
+    null
   );
 
   const [isMobile, setIsMobile] = useState(false);
@@ -40,7 +40,7 @@ const Navbar_Products = () => {
 
   // Mobile accordion state
   const [mobileCategoryOpen, setMobileCategoryOpen] = useState<string | null>(
-    null,
+    null
   );
   const [mobileSubcategoryOpen, setMobileSubcategoryOpen] = useState<
     string | null
@@ -137,7 +137,7 @@ const Navbar_Products = () => {
                       setMobileCategoryOpen(
                         mobileCategoryOpen === category?.category_name
                           ? null
-                          : category?.category_name,
+                          : category?.category_name
                       )
                     }
                   >
@@ -162,7 +162,7 @@ const Navbar_Products = () => {
                                 mobileSubcategoryOpen ===
                                   `${category?.category_name}__${subcategory?.subcategory_name}`
                                   ? null
-                                  : `${category?.category_name}__${subcategory?.subcategory_name}`,
+                                  : `${category?.category_name}__${subcategory?.subcategory_name}`
                               )
                             }
                           >
@@ -191,7 +191,7 @@ const Navbar_Products = () => {
                                   >
                                     {product?.product_name}
                                   </Link>
-                                ),
+                                )
                               )}
                             </div>
                           )}
@@ -243,7 +243,7 @@ const Navbar_Products = () => {
                             className="flex-1 text-center relative overflow-visible"
                             onMouseEnter={() =>
                               setHoveredSubcategory(
-                                subcategory?.subcategory_name,
+                                subcategory?.subcategory_name
                               )
                             }
                             onMouseLeave={() => setHoveredSubcategory(null)}
@@ -307,7 +307,7 @@ const Navbar_Products = () => {
                                             {product?.product_name}
                                           </span>
                                         </Link>
-                                      ),
+                                      )
                                     )}
                                   </div>
                                 </div>
