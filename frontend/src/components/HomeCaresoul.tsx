@@ -91,7 +91,7 @@ export default function Component() {
   };
 
   return (
-    <div className="relative w-full max-w-6xl mx-auto bg-white rounded-lg overflow-hidden shadow-lg">
+    <div className="relative w-full mx-auto bg-white rounded-lg overflow-hidden shadow-lg">
       {/* Main Carousel Container */}
       <div className="relative h-64 sm:h-80 md:h-96 lg:h-[500px] overflow-hidden">
         {/* Image Container with Sliding Effect */}

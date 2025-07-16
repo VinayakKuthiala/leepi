@@ -127,7 +127,7 @@ const GetInTouch = () => {
             <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gradient-to-r from-purple-50 to-pink-50">
               <div className="flex items-center space-x-2">
                 <MessageCircle className="text-purple-600" size={24} />
-                <h2 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                <h2 className="text-2xl font-extrabold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
                   Get In Touch
                 </h2>
               </div>

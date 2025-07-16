@@ -43,10 +43,10 @@ const Footer = () => {
       label: "Contact",
       href: "/contact",
     },
-    {
-      label: "Blog",
-      href: "#",
-    },
+    // {
+    //   label: "Blog",
+    //   href: "#",
+    // },
     {
       label: "FAQ",
       href: "/about#faq",
