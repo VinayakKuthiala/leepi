@@ -11,7 +11,7 @@ const Navbar_Products = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
   const [hoveredSubcategory, setHoveredSubcategory] = useState<string | null>(
-    null,
+    null
   );
 
   const [isMobile, setIsMobile] = useState(false);
@@ -40,7 +40,7 @@ const Navbar_Products = () => {
 
   // Mobile accordion state
   const [mobileCategoryOpen, setMobileCategoryOpen] = useState<string | null>(
-    null,
+    null
   );
   const [mobileSubcategoryOpen, setMobileSubcategoryOpen] = useState<
     string | null
@@ -57,7 +57,7 @@ const Navbar_Products = () => {
       ref={navRef}
       className="bg-white dark:bg-gray-800 shadow-md px-6 py-3 relative z-40 transition-colors duration-200"
     >
-      <div className="flex md:hidden space-x-6 text-gray-700 dark:text-gray-200 font-medium font-sans mt-3 justify-end pb-4">
+      <div className="flex md:hidden space-x-6 text-gray-700 dark:text-gray-200 font-semibold text-base antialiased tracking-normal font-sans mt-3 justify-end pb-4">
         {MenuArr.map((item, idx) => {
           return (
             <Link
@@ -104,10 +104,11 @@ const Navbar_Products = () => {
               <Link
                 prefetch={true}
                 key={idx}
-                className="hover:text-gray-900 dark:hover:text-white"
+                className="font-medium text-base hover:text-gray-900 dark:hover:text-white transition-all duration-300 ease-in-out hover:scale-105 antialiased tracking-wide relative group"
                 href={item.link}
               >
-                {item.title}
+                {item.title}{" "}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-pink-500 transition-all duration-300 group-hover:w-full"></span>
               </Link>
             );
           })}
@@ -146,12 +147,12 @@ const Navbar_Products = () => {
               {CategoriesData?.categories?.map((category) => (
                 <div key={category.category_name}>
                   <button
-                    className="w-full flex items-center justify-between py-2 px-2 text-left text-base font-medium text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded"
+                    className="w-full flex items-center justify-between py-2 px-2 text-left text-lg font-medium text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded antialiased tracking-wide transition-all duration-200"
                     onClick={() =>
                       setMobileCategoryOpen(
                         mobileCategoryOpen === category?.category_name
                           ? null
-                          : category?.category_name,
+                          : category?.category_name
                       )
                     }
                   >
@@ -176,7 +177,7 @@ const Navbar_Products = () => {
                                 mobileSubcategoryOpen ===
                                   `${category?.category_name}__${subcategory?.subcategory_name}`
                                   ? null
-                                  : `${category?.category_name}__${subcategory?.subcategory_name}`,
+                                  : `${category?.category_name}__${subcategory?.subcategory_name}`
                               )
                             }
                           >
@@ -217,7 +218,7 @@ const Navbar_Products = () => {
                                       {product?.product_name}
                                     </Link>
                                   </div>
-                                ),
+                                )
                               )}
                             </div>
                           )}
@@ -247,7 +248,7 @@ const Navbar_Products = () => {
                 }}
               >
                 {/* Category Button */}
-                <button className="flex items-center gap-1 px-6 py-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-colors duration-200">
+                <button className="flex items-center gap-1 px-6 py-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-colors duration-300 antialiased tracking-wide group-hover:scale-105">
                   {category?.category_name}
                   <ChevronDown
                     size={16}
@@ -269,7 +270,7 @@ const Navbar_Products = () => {
                             className="flex-1 text-center relative overflow-visible"
                             onMouseEnter={() =>
                               setHoveredSubcategory(
-                                subcategory?.subcategory_name,
+                                subcategory?.subcategory_name
                               )
                             }
                             onMouseLeave={() => setHoveredSubcategory(null)}
@@ -288,10 +289,10 @@ const Navbar_Products = () => {
                                   className="object-cover"
                                 />
                               </div>
-                              <h4 className="text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">
+                              <h4 className="text-sm font-medium text-gray-900 dark:text-gray-100 mb-1 antialiased tracking-wide">
                                 {subcategory?.subcategory_name}
                               </h4>
-                              <p className="text-xs text-gray-500 dark:text-gray-400">
+                              <p className="text-xs text-gray-500 dark:text-gray-400 antialiased">
                                 {subcategory?.subcategory_products?.length}{" "}
                                 {subcategory?.subcategory_products?.length &&
                                   "Product"}
@@ -334,7 +335,7 @@ const Navbar_Products = () => {
                                             {product?.product_name}
                                           </span>
                                         </Link>
-                                      ),
+                                      )
                                     )}
                                   </div>
                                 </div>
