@@ -364,7 +364,7 @@ const SignUp = () => {
                             prevInput?.focus();
                           }
                         }}
-                        className="text-black w-12 h-12 text-center text-xl font-bold border-2 border-gray-300 rounded-lg focus:border-purple-500 focus:outline-none transition-colors"
+                        className="text-black w-10 md:w-12 h-10 md:h-12 text-center text-xl font-bold border-2 border-gray-300 rounded-lg focus:border-purple-500 focus:outline-none transition-colors"
                         maxLength={1}
                       />
                     ))}
