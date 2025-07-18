@@ -20,7 +20,7 @@ export default function Home() {
       {/* Product Categories Section */}
       <div className="my-12">
         <div className="text-center mb-8">
-          <h2 className="text-3xl xl:text-4xl font-bold text-gray-300 mb-4">
+          <h2 className="text-3xl xl:text-4xl font-bold text-gray-600 mb-4">
             Our Service Categories
           </h2>
           <p className="text-gray-600 max-w-2xl lg:text-lg xl:text-xl  mx-auto">
@@ -31,7 +31,7 @@ export default function Home() {
         <CategoryCarousel />
       </div>
 
-      <FeatureProduct />
+      {/* <FeatureProduct /> */}
 
       {/* What You Get Section & Sign Up Button (Elegant UI) */}
       <WhatYouGetSection />
