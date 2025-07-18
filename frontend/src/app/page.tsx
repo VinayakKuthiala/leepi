@@ -1,29 +1,40 @@
-
 import Image from "next/image";
 import AnimatedWriting from "@/components/AnimatedWriting";
-import ListingCard from "../components/ListingCard"
+import ListingCard from "../components/ListingCard";
+import Caresoul from "@/components/HomeCaresoul";
+import FeatureProduct from "@/components/FeatureProduct";
+import { CategoryCarousel } from "@/components/ProductCategory";
+import WhatYouGetSection from "@/components/WhatYouGetSection";
 
 export default function Home() {
   return (
-   <div className="p-8">
+    <div className="">
       <AnimatedWriting
         imageSrc="/leepi_english_logo.jpg"
         text="Welcome to our creative studio – where design meets emotion"
       />
-      {/* <ListingCard
-          header="Flex Banners"
-          description="Order Customized Flex Banners in Seconds!"
-          bgcolour="from-white to-blue-400"
-          imgSource={'leepi_hindi_logo_trimmed.jpg'}
-          isImageRight={false}
-        />
-        <ListingCard
-          header="Custom Photo Frames"
-          description="2-3-4 - Choose as many as you'd like"
-          bgcolour="from-white to-yellow-400"
-          imgSource={'leepi_english_logo.jpg'}
-          isImageRight={true}
-        /> */}
+      <Caresoul />
+
+      <FeatureProduct isTop={true} />
+
+      {/* Product Categories Section */}
+      <div className="my-12">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl xl:text-4xl font-bold text-gray-600 mb-4">
+            Our Service Categories
+          </h2>
+          <p className="text-gray-600 max-w-2xl lg:text-lg xl:text-xl  mx-auto">
+            Discover our comprehensive range of printing and design services,
+            tailored to meet all your business needs.
+          </p>
+        </div>
+        <CategoryCarousel />
+      </div>
+
+      {/* <FeatureProduct /> */}
+
+      {/* What You Get Section & Sign Up Button (Elegant UI) */}
+      <WhatYouGetSection />
     </div>
   );
 }

@@ -1,0 +1,99 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "title": "Printing Services",
+      "image": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      "subcategories": [
+        {
+          "id": 1,
+          "title": "Business Cards",
+          "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+        },
+        {
+          "id": 2,
+          "title": "Letterheads",
+          "image": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Marketing Materials",
+      "image": "https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      "subcategories": [
+        {
+          "id": 1,
+          "title": "Brochures",
+          "image": "https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+        },
+        {
+          "id": 2,
+          "title": "Flyers",
+          "image": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+        },
+        {
+          "id": 3,
+          "title": "Posters",
+          "image": "https://images.unsplash.com/photo-1611605698335-8b1569810432?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Signage Solutions",
+      "image": "https://images.unsplash.com/photo-1562516155-e0c1ee44059b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      "subcategories": [
+        {
+          "id": 1,
+          "title": "Banner Stands",
+          "image": "https://images.unsplash.com/photo-1562516155-e0c1ee44059b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+        },
+        {
+          "id": 2,
+          "title": "Vinyl Banners",
+          "image": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+        },
+        {
+          "id": 3,
+          "title": "Window Graphics",
+          "image": "https://images.unsplash.com/photo-1497486751825-1233686d5d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+        },
+        {
+          "id": 4,
+          "title": "Floor Graphics",
+          "image": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Digital Printing",
+      "image": "https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      "subcategories": [
+        {
+          "id": 1,
+          "title": "High Quality Prints",
+          "image": "https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Packaging",
+      "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      "subcategories": [
+        {
+          "id": 1,
+          "title": "Custom Boxes",
+          "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+        },
+        {
+          "id": 2,
+          "title": "Labels & Stickers",
+          "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+        }
+      ]
+    }
+  ]
+}

@@ -1,10 +1,9 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { useState } from "react";
+import Link from "next/link";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
-
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,23 +20,31 @@ const Navbar = () => {
             <div className="w-2 h-2 bg-black rounded-full"></div>
           </div>
           {/* <span className="font-bold text-lg text-gray-800">YourCompany</span> */}
-          <Link href="/">
+          <Link prefetch={true} href="/">
             <Image
-                src="/leepi_hindi_logo_trimmed.jpg"
-                alt="leepi Logo"
-                width = {130}
-                height = {0}
-                className="cursor-pointer"
+              src="/leepi_hindi_logo_trimmed.jpg"
+              alt="leepi Logo"
+              width={130}
+              height={0}
+              className="cursor-pointer"
             />
-         </Link>
+          </Link>
         </div>
 
         {/* Menu items */}
         <div className="hidden md:flex space-x-6 text-gray-700 font-medium font-sans">
-          <Link href="/">Home</Link>
-          <Link href="/about">About</Link>
-          <Link href="/services">Services</Link>
-          <Link href="/contact">Contact</Link>
+          <Link prefetch={true} href="/">
+            Home
+          </Link>
+          <Link prefetch={true} href="/about">
+            About
+          </Link>
+          <Link prefetch={true} href="/services">
+            Services
+          </Link>
+          <Link prefetch={true} href="/contact">
+            Contact
+          </Link>
         </div>
 
         {/* Mobile menu toggle */}
@@ -51,10 +58,26 @@ const Navbar = () => {
       {/* Mobile menu */}
       {isOpen && (
         <div className="md:hidden mt-2 space-y-2 text-gray-700 font-medium px-2 flex flex-col">
-          <Link href="/" onClick={() => setIsOpen(false)}>Home</Link>
-          <Link href="/about" onClick={() => setIsOpen(false)}>About</Link>
-          <Link href="/services" onClick={() => setIsOpen(false)}>Services</Link>
-          <Link href="/contact" onClick={() => setIsOpen(false)}>Contact</Link>
+          <Link prefetch={true} href="/" onClick={() => setIsOpen(false)}>
+            Home
+          </Link>
+          <Link prefetch={true} href="/about" onClick={() => setIsOpen(false)}>
+            About
+          </Link>
+          <Link
+            prefetch={true}
+            href="/services"
+            onClick={() => setIsOpen(false)}
+          >
+            Services
+          </Link>
+          <Link
+            prefetch={true}
+            href="/contact"
+            onClick={() => setIsOpen(false)}
+          >
+            Contact
+          </Link>
         </div>
       )}
     </nav>
