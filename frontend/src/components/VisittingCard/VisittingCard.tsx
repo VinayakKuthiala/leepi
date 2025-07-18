@@ -58,7 +58,7 @@ const VisittingCard = () => {
     console.log("Image failed to load, using fallback");
     setImageError(true);
     setImageSrc(
-      "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=260&h=260&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=260&h=260&fit=crop&crop=center"
     );
   };
 
@@ -93,7 +93,7 @@ const VisittingCard = () => {
             // rules={{ required: "Please select a material" }}
             render={({ field }) => (
               <div className="flex flex-col gap-2 w-full max-w-2x">
-                <label className="font-medium text-gray-700 dark:text-gray-200">
+                <label className="text-lg font-bold bg-gradient-to-r from-blue-600 to-purple-500 bg-clip-text text-transparent drop-shadow-sm">
                   Material
                 </label>
                 <select
@@ -133,7 +133,7 @@ const VisittingCard = () => {
             }}
             render={({ field }) => (
               <div className="flex flex-col gap-2 w-full max-w-2xl">
-                <label className="font-medium text-gray-700 dark:text-gray-200">
+                <label className="text-lg font-bold bg-gradient-to-r from-blue-600 to-purple-500 bg-clip-text text-transparent drop-shadow-sm">
                   Matter <span className="text-red-500">*</span>
                 </label>
                 <textarea
@@ -170,7 +170,7 @@ const VisittingCard = () => {
             }}
             render={({ field }) => (
               <div className="flex flex-col gap-2 w-full max-w-2xl">
-                <label className="font-medium text-gray-700 dark:text-gray-200">
+                <label className="text-lg font-bold bg-gradient-to-r from-blue-600 to-purple-500 bg-clip-text text-transparent drop-shadow-sm">
                   Upload Design <span className="text-red-500">*</span>
                 </label>
                 <input

@@ -380,102 +380,84 @@ export default function ContactPage() {
           </div>
 
           {/* Contact Information */}
+
           <div className="space-y-8 lg:sticky lg:top-8">
             {/* Info Card */}
-            <div className="bg-white rounded-2xl shadow-xl p-8 md:p-10 overflow-hidden relative">
-              <div className="absolute top-0 left-0 w-40 h-40 bg-gradient-to-br from-indigo-100 to-blue-100 rounded-full -ml-20 -mt-20 opacity-50"></div>
 
-              <h2 className="text-2xl font-bold text-gray-800 mb-6 relative">
-                Contact Information
-              </h2>
-
+            {/* <div className=" w-full flex gap-5 items-center">     
               <div className="space-y-6 relative">
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center mr-4">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 text-purple-600"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 8V5z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-medium text-gray-900">
-                      Reach us at
-                    </h3>
-                    <p className="mt-1 text-gray-600">+91 98765 43210</p>
-                    <p className="mt-1 text-gray-600">info@leepi.com</p>
+                <div className="p-6 bg-white rounded-2xl shadow-md w-full max-w-sm">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                    Contact Information
+                  </h2>
+
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 h-12 w-12 rounded-full bg-purple-100 flex items-center justify-center">
+                      <Call/>
+                    </div>
+
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-800">
+                        Reach us at
+                      </h3>
+                      <p className="text-gray-600">+91 98765 43210</p>
+                      <p className="text-gray-600">info@leepi.com</p>
+                    </div>
                   </div>
                 </div>
+              </div>
+              <div className=" w-1/2">
+                <a
+                  href="https://wa.me/message/HKZXMSDIYYEXF1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    className="mt-4 w-full lg:mt-10 rounded-lg"
+                    src="/office_whatsapp_qr_cropped.jpg"
+                    alt="Office content 2"
+                  />
+                </a>
+              </div>
+            </div> */}
 
-                {/* <div className="flex items-start">
-                  <div className="flex-shrink-0 h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center mr-4">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 text-purple-600"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-medium text-gray-900">Email</h3>
-                    <p className="mt-1 text-gray-600">info@leepi.com</p>
-                    <p className="mt-1 text-gray-600">support@leepi.com</p>
-                  </div>
-                </div> */}
+            <div className="w-full flex flex-col md:flex-row gap-5 items-center lg:items-stretch">
+              {/* Left Contact Card */}
+              <div className="flex-1 flex items-center justify-center">
+                <div className="p-6 bg-white rounded-2xl shadow-md w-full max-w-sm h-full flex flex-col justify-center">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                    Contact Information
+                  </h2>
 
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center mr-4">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 text-purple-600"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-medium text-gray-900">
-                      Address
-                    </h3>
-                    <p className="mt-1 text-gray-600">
-                      123 Business Street, Tech Park
-                      <br />
-                      New Delhi, Delhi 110001
-                      <br />
-                      India
-                    </p>
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 h-12 w-12 rounded-full bg-purple-100 flex items-center justify-center">
+                      <Call className="text-purple-600" />
+                    </div>
+
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-800">
+                        Reach us at
+                      </h3>
+                      <p className="text-gray-600">+91 98765 43210</p>
+                      <p className="text-gray-600">info@leepi.com</p>
+                    </div>
                   </div>
                 </div>
+              </div>
+
+              {/* Right QR Code Image */}
+              <div className="flex-1 flex items-center justify-center">
+                <a
+                  href="https://wa.me/message/HKZXMSDIYYEXF1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    className="rounded-2xl h-full object-contain"
+                    src="/office_whatsapp_qr_cropped.jpg"
+                    alt="WhatsApp QR"
+                  />
+                </a>
               </div>
             </div>
 
@@ -494,20 +476,8 @@ export default function ContactPage() {
                     9:00 AM - 6:00 PM
                   </span>
                 </div>
-                <div className="flex justify-between border-b border-gray-100 pb-2">
-                  <span className="text-gray-900">Saturday</span>
-                  <span className="font-medium text-gray-600">
-                    10:00 AM - 4:00 PM
-                  </span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-900">Sunday</span>
-                  <span className="font-medium text-purple-600">Closed</span>
-                </div>
               </div>
             </div>
-
-            {/* Social Media */}
             <div className="bg-white rounded-2xl shadow-xl p-8 md:p-10 overflow-hidden relative">
               <h2 className="text-2xl font-bold text-gray-800 mb-6">
                 Connect With Us
@@ -574,20 +544,36 @@ export default function ContactPage() {
                     <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
                   </svg>
                 </a>
+                <a
+                  href="https://wa.me/message/HKZXMSDIYYEXF1"
+                  className="h-10 w-10 rounded-full bg-purple-100 hover:bg-purple-200 flex items-center justify-center transition-colors duration-300"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <svg
+                    className="h-5 w-5 text-purple-600"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.67.15-.198.297-.767.967-.94 1.164-.173.198-.347.223-.644.075-.297-.15-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.15-.174.198-.298.298-.497.1-.198.05-.373-.025-.522-.075-.149-.669-1.612-.916-2.21-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.412.248-.694.248-1.29.173-1.412-.074-.123-.272-.198-.57-.347z"></path>
+                    <path d="M12.003 2.001c-5.522 0-9.999 4.477-9.999 10 0 1.768.466 3.508 1.348 5.032L2 22l5.128-1.344c1.464.804 3.115 1.221 4.875 1.221h.001c5.523 0 9.999-4.477 9.999-9.999s-4.476-10-9.999-10zm0 17.993c-1.544 0-3.05-.418-4.37-1.208l-.313-.185-3.045.797.81-2.967-.205-.323a7.975 7.975 0 01-1.237-4.255c0-4.418 3.58-7.999 7.999-7.999s8 3.581 8 7.999-3.581 8-8 8z"></path>
+                  </svg>
+                </a>
               </div>
             </div>
           </div>
         </div>
 
         {/* Map */}
-        <div className="mt-16 relative rounded-2xl overflow-hidden shadow-xl h-96 bg-gray-200">
+        {/* <div className="mt-16 relative rounded-2xl overflow-hidden shadow-xl h-96 bg-gray-200">
           <div className="absolute inset-0 bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center">
             <p className="text-gray-600">
               Map loading... (Replace with actual map component)
             </p>
           </div>
-          {/* Add your map component here */}
-        </div>
+          
+        </div> */}
       </main>
       <ToastContainer
         position="bottom-right"
@@ -600,3 +586,22 @@ export default function ContactPage() {
     </div>
   );
 }
+
+const Call = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-5 w-5 text-purple-600"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 8V5z"
+      />
+    </svg>
+  );
+};
